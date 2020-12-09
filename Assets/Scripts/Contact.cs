@@ -22,8 +22,8 @@ public class Contact : MonoBehaviour
     {
         float impactAngle = Vector3.Angle(Soyuz.transform.position, ExternalTarget.transform.position);
         float velocity = Soyuz.velocity.z;
-        Debug.Log(velocity.ToString() + impactAngle.ToString() + collision.gameObject.ToString());
-        if (collision.gameObject == ExternalTarget && impactAngle < 0.035 && velocity < 0.05)
+        Debug.Log(velocity.ToString() + " " + impactAngle.ToString() + " " + collision.gameObject.ToString());
+        if (collision.gameObject == ExternalTarget && impactAngle < 0.1 && velocity < 0.05)
         {
             Debug.Log("Alignment!");
             if (ExternalContact != null)

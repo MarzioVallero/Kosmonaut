@@ -9,13 +9,13 @@ public class JoystickController : MonoBehaviour
     public float Torque = 0.5f;
     public float Thrust = 129f;
     public Rigidbody rb;
+    public GameObject ZvezdaExternalCollider;
     public bool enable = true;
     public bool fault = false;
     GamePadState state;
     PlayerIndex playerIndex;
 
     private float intensity = 0f;
-    private Vector3 finalPosition = new Vector3 (-2.3073f, 34.21982f, 253.379f);
 
     void OnEnable()
     {
@@ -36,8 +36,7 @@ public class JoystickController : MonoBehaviour
         GamePad.SetVibration(playerIndex, 0.0f, 0.0f);
     }
 
-    void TmpDisable()
-    {
+    void TmpDisable()    {
         enable = false;
         fault = true;
         StartCoroutine(waiter());
@@ -158,14 +157,13 @@ public class JoystickController : MonoBehaviour
         }
         else if (!enable && !fault)
         {
-            if (Vector3.Angle(rb.transform.forward, finalPosition) > 0.1f || Vector3.Distance(rb.transform.position, finalPosition) > 0.01f)
+            if (Vector3.Angle(rb.transform.forward, ZvezdaExternalCollider.transform.forward) > 90.001f || Vector3.Angle(rb.transform.forward, ZvezdaExternalCollider.transform.forward) < 89.999f || Vector3.Distance(rb.transform.position, ZvezdaExternalCollider.transform.position) > 0.85f)
             {
                 rb.velocity = Vector3.zero;
                 rb.angularVelocity = Vector3.zero;
-                var desiredRotQ = Quaternion.Euler(0.0f, 0.0f, 45.3f);
+                var desiredRotQ = Quaternion.Euler(0.0f, 0.0f, 44.126f);
                 rb.transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotQ, Time.deltaTime);
-                Vector3 finalPosition = new Vector3(-2.3073f, 34.21982f, 253.379f);
-                rb.transform.position = Vector3.Lerp(transform.position, finalPosition, 0.005f * Time.deltaTime);
+                rb.transform.position = Vector3.Lerp(transform.position, (ZvezdaExternalCollider.transform.position - new Vector3 (0f, 0f, 0.7f)), 0.5f * Time.deltaTime);
             }
         }
     }

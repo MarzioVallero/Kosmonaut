@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ISSExploder : MonoBehaviour
+public class ISSManager : MonoBehaviour
 {
     public Rigidbody ISS;
     public ParticleSystem explosion;
@@ -10,11 +10,22 @@ public class ISSExploder : MonoBehaviour
     private void OnEnable()
     {
         Contact.ExcessiveContact += Explode;
+        Contact.ExternalContact += DeactivateColliders;
     }
 
     private void OnDisable()
     {
         Contact.ExcessiveContact -= Explode;
+        Contact.ExternalContact -= DeactivateColliders;
+    }
+
+    void DeactivateColliders()
+    {
+        Debug.Log("Colliders Deactivated.");
+        foreach (Transform child in gameObject.GetComponentsInChildren<Transform>())
+        {
+            Destroy(child.gameObject.GetComponent<Collider>());
+        }
     }
 
     void Explode()
