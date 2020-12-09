@@ -163,7 +163,7 @@ public class JoystickController : MonoBehaviour
                 rb.angularVelocity = Vector3.zero;
                 var desiredRotQ = Quaternion.Euler(0.0f, 0.0f, 44.126f);
                 rb.transform.rotation = Quaternion.Lerp(transform.rotation, desiredRotQ, Time.deltaTime);
-                rb.transform.position = Vector3.Lerp(transform.position, (ZvezdaExternalCollider.transform.position - new Vector3 (0f, 0f, 0.7f)), 0.5f * Time.deltaTime);
+                rb.transform.position = Vector3.Lerp(transform.position, (ZvezdaExternalCollider.transform.position - new Vector3 (0f, 0f, 0.85f)), 0.2f * Time.deltaTime);
             }
         }
     }
