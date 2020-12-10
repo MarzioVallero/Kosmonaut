@@ -23,17 +23,20 @@ public class AudioManager : MonoBehaviour
         JoystickController.StopThruster -= StopPlaying;
     }
 
-    void Playing()
+    void Playing(string name)
     {
-        Debug.Log("Start Playing!");
-        if (!m_MyAudioSource.isPlaying)
+        if (!m_MyAudioSource.isPlaying && this.gameObject.name.ToString() == name)
+        {
             m_MyAudioSource.Play();
+        }
+
     }
 
-    void StopPlaying()
+    void StopPlaying(string name)
     {
-        Debug.Log("Stop Playing!");
-        if (m_MyAudioSource.isPlaying)
+        if (m_MyAudioSource.isPlaying && this.gameObject.name.ToString() == name)
+        {
             m_MyAudioSource.Stop();
+        }
     }
 }

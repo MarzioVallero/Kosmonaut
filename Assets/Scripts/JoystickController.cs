@@ -5,7 +5,7 @@ using XInputDotNetPure; // Required in C#
 
 public class JoystickController : MonoBehaviour
 {
-    public delegate void ThrustAction();
+    public delegate void ThrustAction(string name);
     public static event ThrustAction FireThruster;
     public static event ThrustAction StopThruster;
 
@@ -72,60 +72,90 @@ public class JoystickController : MonoBehaviour
                 rb.AddRelativeTorque(Vector3.forward * Torque, ForceMode.Impulse);
                 intensity += 0.005f;
                 GamePad.SetVibration(playerIndex, intensity, 0.0f);
+                if (FireThruster != null)
+                {
+                    FireThruster("UpThrusterAudio");
+                    FireThruster("RightThrusterAudio");
+                }
             }
             if (h > 0.0f)
             {
                 rb.AddRelativeTorque(Vector3.back * Torque, ForceMode.Impulse);
                 intensity += 0.005f;
                 GamePad.SetVibration(playerIndex, intensity, 0.0f);
+                if (FireThruster != null)
+                {
+                    FireThruster("LeftThrusterAudio");
+                    FireThruster("DownThrusterAudio");
+                }
             }
             if (v < 0.0f)
             {
                 rb.AddRelativeTorque(Vector3.right * Torque, ForceMode.Impulse);
                 intensity += 0.005f;
                 GamePad.SetVibration(playerIndex, intensity, 0.0f);
+                if (FireThruster != null)
+                {
+                    FireThruster("UpThrusterAudio");
+                    FireThruster("FrontThrusterAudio");
+                }
             }
             if (v > 0.0f)
             {
                 rb.AddRelativeTorque(Vector3.left * Torque, ForceMode.Impulse);
                 intensity += 0.005f;
                 GamePad.SetVibration(playerIndex, intensity, 0.0f);
+                if (FireThruster != null)
+                {
+                    FireThruster("DownThrusterAudio");
+                    FireThruster("FrontThrusterAudio");
+                }
             }
             if (rh < 0.0f)
             {
                 rb.AddRelativeForce(Vector3.left * Thrust);
                 intensity += 0.005f;
                 GamePad.SetVibration(playerIndex, 0.0f, intensity);
+                if (FireThruster != null)
+                    FireThruster("RightThrusterAudio");
             }
             if (rh > 0.0f)
             {
                 rb.AddRelativeForce(Vector3.right * Thrust);
                 intensity += 0.005f;
                 GamePad.SetVibration(playerIndex, 0.0f, intensity);
+                if (FireThruster != null)
+                    FireThruster("LeftThrusterAudio");
             }
             if (rv < 0.0f)
             {
                 rb.AddRelativeForce(Vector3.down * Thrust);
                 intensity += 0.005f;
                 GamePad.SetVibration(playerIndex, 0.0f, intensity);
+                if (FireThruster != null)
+                    FireThruster("UpThrusterAudio");
             }
             if (rv > 0.0f)
             {
                 rb.AddRelativeForce(Vector3.up * Thrust);
                 intensity += 0.005f;
                 GamePad.SetVibration(playerIndex, 0.0f, intensity);
+                if (FireThruster != null)
+                    FireThruster("DownThrusterAudio");
             }
             if (tr > 0.0f)
             {
                 rb.AddRelativeForce(Vector3.forward * Thrust);
                 GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
                 if (FireThruster != null)
-                    FireThruster();
+                    FireThruster("BackThrusterAudio");
             }
             if (tr < 0.0f)
             {
                 rb.AddRelativeForce(Vector3.back * Thrust);
                 GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
+                if (FireThruster != null)
+                    FireThruster("FrontThrusterAudio");
             }
             if (rbumper == true && lbumper == true)
             {
@@ -145,12 +175,22 @@ public class JoystickController : MonoBehaviour
                 rb.AddRelativeTorque(Vector3.up * Torque, ForceMode.Impulse);
                 intensity += 0.005f;
                 GamePad.SetVibration(playerIndex, 0.0f, intensity);
+                if (FireThruster != null)
+                {
+                    FireThruster("LeftThrusterAudio");
+                    FireThruster("BackThrusterAudio");
+                }
             }
             else if (lbumper == true)
             {
                 rb.AddRelativeTorque(Vector3.down * Torque, ForceMode.Impulse);
                 intensity += 0.005f;
                 GamePad.SetVibration(playerIndex, intensity, 0.0f);
+                if (FireThruster != null)
+                {
+                    FireThruster("RightThrusterAudio");
+                    FireThruster("FrontThrusterAudio");
+                }
             }
             if (h == 0 && v == 0 && rh == 0 && rv == 0 && tr == 0 && rbumper == false && lbumper == false)
             {
@@ -163,7 +203,7 @@ public class JoystickController : MonoBehaviour
                 foreach (AudioSource child in rb.gameObject.GetComponentsInChildren<AudioSource>())
                 {
                     if (child.playOnAwake == false && StopThruster != null)
-                        StopThruster();
+                        StopThruster(child.gameObject.name.ToString());
                 }
             }
         }
