@@ -5,6 +5,10 @@ using XInputDotNetPure; // Required in C#
 
 public class JoystickController : MonoBehaviour
 {
+    public delegate void ThrustAction();
+    public static event ThrustAction FireThruster;
+    public static event ThrustAction StopThruster;
+
     public Camera Camera;
     public float Torque = 0.5f;
     public float Thrust = 129f;
@@ -115,6 +119,8 @@ public class JoystickController : MonoBehaviour
             {
                 rb.AddRelativeForce(Vector3.forward * Thrust);
                 GamePad.SetVibration(playerIndex, state.Triggers.Left, state.Triggers.Right);
+                if (FireThruster != null)
+                    FireThruster();
             }
             if (tr < 0.0f)
             {
@@ -153,6 +159,12 @@ public class JoystickController : MonoBehaviour
                 else
                     intensity = 0.18f;
                 GamePad.SetVibration(playerIndex, intensity, intensity);
+
+                foreach (AudioSource child in rb.gameObject.GetComponentsInChildren<AudioSource>())
+                {
+                    if (child.playOnAwake == false && StopThruster != null)
+                        StopThruster();
+                }
             }
         }
         else if (!enable && !fault)
