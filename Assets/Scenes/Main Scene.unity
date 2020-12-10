@@ -2166,7 +2166,7 @@ PrefabInstance:
     - target: {fileID: 1357881467854486451, guid: ec4dc4b6fc52f8642a2515f43aac2cff,
         type: 3}
       propertyPath: m_Pitch
-      value: -1.7
+      value: -2
       objectReference: {fileID: 0}
     - target: {fileID: 1357881467854486451, guid: ec4dc4b6fc52f8642a2515f43aac2cff,
         type: 3}
@@ -6214,13 +6214,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845764279}
-  m_LocalRotation: {x: 0, y: 0, z: -0.38268343, w: 0.92387956}
+  m_LocalRotation: {x: -0.10111028, y: 0.08160156, z: -0.38604003, w: 0.91328585}
   m_LocalPosition: {x: -1.28, y: -1.28, z: 0.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1201305781}
   m_RootOrder: 10
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -45}
+  m_LocalEulerAnglesHint: {x: -6.9890003, y: 13.227, z: -46.638}
 --- !u!108 &1845764281
 Light:
   m_ObjectHideFlags: 0
@@ -6235,8 +6235,8 @@ Light:
   m_Color: {r: 1, g: 0.77924305, b: 0.5518868, a: 1}
   m_Intensity: 1
   m_Range: 10
-  m_SpotAngle: 30
-  m_InnerSpotAngle: 21.80208
+  m_SpotAngle: 50
+  m_InnerSpotAngle: 5
   m_CookieSize: 10
   m_Shadows:
     m_Type: 0
