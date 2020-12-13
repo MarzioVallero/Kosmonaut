@@ -10,6 +10,8 @@ public class FirstPersonLook : MonoBehaviour
     public float smoothing = 2;
     public bool isActive = true;
 
+    private float xRot;
+
     void Reset()
     {
         character = GetComponentInParent<FirstPersonMovement>().transform;
@@ -18,6 +20,7 @@ public class FirstPersonLook : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        xRot = character.rotation.eulerAngles.x;
     }
 
     void Update()
@@ -31,7 +34,7 @@ public class FirstPersonLook : MonoBehaviour
 
         // Rotate camera and controller.
         transform.localRotation = Quaternion.AngleAxis(-currentMouseLook.y, Vector3.right);
-        character.localRotation = Quaternion.AngleAxis(currentMouseLook.x, Vector3.back);
-        character.Rotate(new Vector3(-90, 0, 0));
+        character.localRotation = Quaternion.AngleAxis(currentMouseLook.x, character.up);
+        character.Rotate(new Vector3(xRot, 0, 0));
     }
 }
