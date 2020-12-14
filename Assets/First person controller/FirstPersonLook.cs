@@ -3,7 +3,7 @@
 public class FirstPersonLook : MonoBehaviour
 {
     [SerializeField]
-    Transform character;
+    public Transform character;
     Vector2 currentMouseLook;
     Vector2 appliedMouseDelta;
     public float sensitivity = 1;
@@ -11,11 +11,6 @@ public class FirstPersonLook : MonoBehaviour
     public bool isActive = true;
 
     private float xRot;
-
-    void Reset()
-    {
-        character = GetComponentInParent<FirstPersonMovement>().transform;
-    }
 
     void Start()
     {
@@ -33,8 +28,9 @@ public class FirstPersonLook : MonoBehaviour
         currentMouseLook.y = Mathf.Clamp(currentMouseLook.y, -90, 90);
 
         // Rotate camera and controller.
-        transform.localRotation = Quaternion.AngleAxis(-currentMouseLook.y, Vector3.right);
-        character.localRotation = Quaternion.AngleAxis(currentMouseLook.x, character.up);
-        character.Rotate(new Vector3(xRot, 0, 0));
+        //character.localRotation = Quaternion.AngleAxis(currentMouseLook.x, character.up);
+        //transform.localRotation = Quaternion.AngleAxis(-currentMouseLook.y, Vector3.right);
+        transform.localRotation = Quaternion.AngleAxis(currentMouseLook.x, Vector3.up) * Quaternion.AngleAxis(-currentMouseLook.y, Vector3.right);
+        //character.Rotate(new Vector3(xRot, 0, 0));
     }
 }
