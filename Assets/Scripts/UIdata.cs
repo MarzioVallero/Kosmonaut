@@ -41,7 +41,7 @@ public class UIdata : MonoBehaviour
             relativeVelocity = -Soyuz.velocity.magnitude;
 
         TopLeft.text = "Ф44 СБЛИЖЕНИЕ\n" +
-                       "        ОБЛЕТ " + status + "        ЛСК\n" +
+                       "        ОБЛЕТ " + status + "      ЛСК\n" +
                        "Б12\n" +
                        "ДУС 123   1\n" +
                        "Р 181.5\n" +
