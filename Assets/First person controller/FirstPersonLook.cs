@@ -30,7 +30,7 @@ public class FirstPersonLook : MonoBehaviour
         // Rotate camera and controller.
         //character.localRotation = Quaternion.AngleAxis(currentMouseLook.x, character.up);
         //transform.localRotation = Quaternion.AngleAxis(-currentMouseLook.y, Vector3.right);
-        transform.localRotation = Quaternion.AngleAxis(currentMouseLook.x, Vector3.up) * Quaternion.AngleAxis(-currentMouseLook.y, Vector3.right);
         //character.Rotate(new Vector3(xRot, 0, 0));
+        transform.localRotation = Quaternion.AngleAxis(currentMouseLook.x, Vector3.up) * Quaternion.AngleAxis(-currentMouseLook.y, Vector3.right);
     }
 }

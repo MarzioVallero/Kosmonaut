@@ -16,6 +16,6 @@ public class AutoRotate : MonoBehaviour
     void Update()
     {
         rotY += AngularSpeed * Time.deltaTime;
-        transform.rotation = Quaternion.AngleAxis(rotY, Vector3.down);
+        transform.rotation = Quaternion.AngleAxis(rotY, Vector3.up);
     }
 }
