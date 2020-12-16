@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AutoRotate : MonoBehaviour
 {
-    private float AngularSpeed = 0.004178074f;
+    public float AngularSpeed = 0.004178074f;
     private Transform earth;
     private float rotY;
 
@@ -16,6 +16,6 @@ public class AutoRotate : MonoBehaviour
     void Update()
     {
         rotY += AngularSpeed * Time.deltaTime;
-        transform.rotation = Quaternion.AngleAxis(rotY, Vector3.up);
+        transform.rotation = Quaternion.AngleAxis(rotY, Vector3.down);
     }
 }
