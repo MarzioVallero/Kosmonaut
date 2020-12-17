@@ -44,7 +44,7 @@ public class TargetShooter : MonoBehaviour
 
         if (Physics.Raycast(fpscam.transform.position, fpscam.transform.forward, out hit, range))
         {
-            Target target = hit.transform.GetComponent<Target>();
+            Target target = hit.collider.gameObject.GetComponent<Target>();
 
             if (previousTarget != target && previousTarget != null) previousTarget.Hover(false);
 
