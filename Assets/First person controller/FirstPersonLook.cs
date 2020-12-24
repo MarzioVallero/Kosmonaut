@@ -10,6 +10,7 @@ public class FirstPersonLook : MonoBehaviour
     public float smoothing = 2;
     public bool isActive = true;
 
+    [SerializeField] private Camera ScreenCam;
     private float xRot;
 
     void Start()
@@ -32,5 +33,23 @@ public class FirstPersonLook : MonoBehaviour
         //transform.localRotation = Quaternion.AngleAxis(-currentMouseLook.y, Vector3.right);
         //character.Rotate(new Vector3(xRot, 0, 0));
         transform.localRotation = Quaternion.AngleAxis(currentMouseLook.x, Vector3.up) * Quaternion.AngleAxis(-currentMouseLook.y, Vector3.right);
+    }
+
+    public void Toggle(bool pausing)
+    {
+        if (pausing)
+        {
+            isActive = false;
+            Cursor.lockState = CursorLockMode.None;
+        }
+        else if(ScreenCam.enabled)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else
+        {
+            isActive = true;
+            Cursor.lockState = CursorLockMode.Locked;
+        }
     }
 }

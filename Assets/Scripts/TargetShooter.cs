@@ -6,6 +6,7 @@ public class TargetShooter : MonoBehaviour
     public float range = 50f;
     public float rate = 15f;
     public Camera fpscam;
+    public bool isRaycastActive = true;
 
     private WaitForSeconds shotDuration = new WaitForSeconds(0.3f);
     private bool laserLine;
@@ -20,10 +21,13 @@ public class TargetShooter : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!isRaycastActive) return;
+
         if (laserLine)
         {
             Debug.DrawRay(fpscam.transform.position, fpscam.transform.forward * range, Color.blue);
         }
+
         if (Input.GetButtonDown("Fire1") && Time.time >= nextTimeToPress)
         {
             nextTimeToPress = Time.time + 1f/rate;
