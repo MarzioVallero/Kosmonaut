@@ -17,12 +17,12 @@ public class OptionsMenu : MonoBehaviour
         List<string> options = new List<string>();
 
         int currentResolutionIndex = 0;
-        for(int i = 0; i < resolutions.Length; i++)
+        for (int i = 0; i < resolutions.Length; i++)
         {
             string option = resolutions[i].width + " * " + resolutions[i].height;
             options.Add(option);
 
-            if(resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
+            if (resolutions[i].width == Screen.currentResolution.width && resolutions[i].height == Screen.currentResolution.height)
             {
                 currentResolutionIndex = i;
             }
@@ -53,4 +53,14 @@ public class OptionsMenu : MonoBehaviour
     {
         Screen.fullScreen = isFullscreen;
     }
+
+    public void SetVibration(bool enableVibration)
+    {
+        //Gestisci il bug che attiva la vibrazione quando viene disattivata nelle opzioni
+        GameObject soyuz = GameObject.Find("Soyuz");
+        JoystickController joystickController = soyuz.GetComponent<JoystickController>();
+
+        joystickController.SetVibration(enableVibration);
+    }
 }
+

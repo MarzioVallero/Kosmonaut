@@ -27,19 +27,27 @@ public class PauseMenu : MonoBehaviour
 
     public void Pause()
     {
+        GameObject soyuz = GameObject.Find("Soyuz");
+        JoystickController joystickController = soyuz.GetComponent<JoystickController>();
+
         pauseMenuUI.SetActive(true);
         Time.timeScale = 0f;
         fpl.Toggle(true);
         targetShooter.isRaycastActive = false;
-        gameIsPaused = true;
+        joystickController.ResetVibration(true);
+        gameIsPaused = true;        
     }
 
     public void Resume()
     {
+        GameObject soyuz = GameObject.Find("Soyuz");
+        JoystickController joystickController = soyuz.GetComponent<JoystickController>();
+
         pauseMenuUI.SetActive(false);
         Time.timeScale = 1f;
         fpl.Toggle(false);
         targetShooter.isRaycastActive = true;
+        joystickController.ResetVibration(false);
         gameIsPaused = false;
     }
 
