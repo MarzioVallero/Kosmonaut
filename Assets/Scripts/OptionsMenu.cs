@@ -56,7 +56,6 @@ public class OptionsMenu : MonoBehaviour
 
     public void SetVibration(bool enableVibration)
     {
-        //Gestisci il bug che attiva la vibrazione quando viene disattivata nelle opzioni
         GameObject soyuz = GameObject.Find("Soyuz");
         JoystickController joystickController = soyuz.GetComponent<JoystickController>();
 

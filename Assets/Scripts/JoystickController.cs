@@ -10,18 +10,30 @@ public class JoystickController : MonoBehaviour
     public static event ThrustAction StopThruster;
 
     public Camera Camera;
-    public float Torque = 0.5f;
-    public float Thrust = 129f;
+    public float InitialTorque = 0.5f;
+    public float InitialThrust = 129f;
+    public float MinTorque = 0.25f;
+    public float MinThrust = 64.5f;
+    public float MaxTorque = 1f;
+    public float MaxThrust = 258f;
     public Rigidbody rb;
     public GameObject ZvezdaExternalCollider;
     public bool enable = true;    
     public bool fault = false;
     public bool enableVibration = true;
+    /*[HideInInspector]*/ public float Thrust;
+    /*[HideInInspector]*/ public float Torque;
     bool lastVibrationSetting = true;
     GamePadState state;
     PlayerIndex playerIndex;
 
-    private float intensity = 0f;
+    private float intensity = 0f;    
+
+    void Start()
+    {
+        Thrust = InitialThrust;
+        Torque = InitialTorque;
+    }
 
     void OnEnable()
     {

@@ -48,7 +48,12 @@ public class Target : MonoBehaviour
         if (_renderer == null)
             return;
         if (isScreen) SwitchCamera();
-        else StartCoroutine(TimedAction());
+        else
+        {
+            string buttonNumber = gameObject.name.Substring(gameObject.name.Length - 1);
+            ButtonSpecificActions(int.Parse(buttonNumber));
+            StartCoroutine(TimedAction());
+        }
     }
 
     /// <summary>
@@ -69,6 +74,33 @@ public class Target : MonoBehaviour
         fpl.isActive = !fpl.isActive;
         disableOutline = !disableOutline;
         outline.enabled = !outline.enabled;
+    }
+
+    private void ButtonSpecificActions(int buttonNumber)
+    {
+        GameObject soyuz = GameObject.Find("Soyuz");
+        JoystickController joystickController = soyuz.GetComponent<JoystickController>();
+
+        float thrustVariation = joystickController.InitialThrust * 0.5f;
+        float torqueVariation = joystickController.InitialTorque * 0.5f;
+
+        switch (buttonNumber)
+        {
+            case 8:
+                if (joystickController.Thrust - thrustVariation > joystickController.MinThrust)
+                {
+                    joystickController.Thrust -= thrustVariation;
+                    joystickController.Torque -= torqueVariation;
+                }
+                break;
+            case 9:
+                if (joystickController.Thrust + thrustVariation <= joystickController.MaxThrust)
+                {
+                    joystickController.Thrust += thrustVariation;
+                    joystickController.Torque += torqueVariation;
+                }
+                break;
+        }
     }
 
     private IEnumerator TimedAction()
