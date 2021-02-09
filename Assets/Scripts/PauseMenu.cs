@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
     public bool gameIsPaused = false;
     public GameObject pauseMenuUI;
     public GameObject fpcontroller;
+    public GameObject UICanvas;
 
     private FirstPersonLook fpl;
     private TargetShooter targetShooter;
@@ -31,6 +32,7 @@ public class PauseMenu : MonoBehaviour
         JoystickController joystickController = soyuz.GetComponent<JoystickController>();
 
         pauseMenuUI.SetActive(true);
+        UICanvas.SetActive(false);
         Time.timeScale = 0f;
         fpl.Toggle(true);
         targetShooter.isRaycastActive = false;
@@ -44,6 +46,7 @@ public class PauseMenu : MonoBehaviour
         JoystickController joystickController = soyuz.GetComponent<JoystickController>();
 
         pauseMenuUI.SetActive(false);
+        UICanvas.SetActive(true);
         Time.timeScale = 1f;
         fpl.Toggle(false);
         targetShooter.isRaycastActive = true;

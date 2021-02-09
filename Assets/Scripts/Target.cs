@@ -17,9 +17,12 @@ public class Target : MonoBehaviour
     private bool fpsCam = true;
     private FirstPersonLook fpl;
     private bool disableOutline = false;
+    private GameObject UICanvas;
 
     void Start()
     {
+        UICanvas = GameObject.Find("UICanvas");
+
         _renderer = GetComponent<Renderer>();
         originalMaterial = _renderer.material;
         pressDuration = new WaitForSeconds(activeTime);
@@ -27,7 +30,7 @@ public class Target : MonoBehaviour
 
         outline.OutlineMode = Outline.Mode.OutlineVisible;
         outline.OutlineColor = Color.green;
-        outline.OutlineWidth = 10f;
+        outline.OutlineWidth = 3f;
 
         outline.enabled = false;
 
@@ -52,7 +55,7 @@ public class Target : MonoBehaviour
         {
             string buttonNumber = gameObject.name.Substring(gameObject.name.Length - 1);
             ButtonSpecificActions(int.Parse(buttonNumber));
-            StartCoroutine(TimedAction());
+            //StartCoroutine(TimedAction());
         }
     }
 
@@ -67,8 +70,9 @@ public class Target : MonoBehaviour
     }
 
     private void SwitchCamera()
-    {
+    {        
         fpsCam = !fpsCam;
+        UICanvas.SetActive(fpsCam);
         FpsCam.enabled = fpsCam;
         ScreenCam.enabled = !fpsCam;
         fpl.isActive = !fpl.isActive;
@@ -80,6 +84,7 @@ public class Target : MonoBehaviour
     {
         GameObject soyuz = GameObject.Find("Soyuz");
         JoystickController joystickController = soyuz.GetComponent<JoystickController>();
+        DotweenController dotweenController = GetComponent<DotweenController>();
 
         float thrustVariation = joystickController.InitialThrust * 0.5f;
         float torqueVariation = joystickController.InitialTorque * 0.5f;
@@ -87,6 +92,7 @@ public class Target : MonoBehaviour
         switch (buttonNumber)
         {
             case 8:
+                dotweenController.RunPressAnimation();
                 if (joystickController.Thrust - thrustVariation > joystickController.MinThrust)
                 {
                     joystickController.Thrust -= thrustVariation;
@@ -94,6 +100,7 @@ public class Target : MonoBehaviour
                 }
                 break;
             case 9:
+                dotweenController.RunPressAnimation();
                 if (joystickController.Thrust + thrustVariation <= joystickController.MaxThrust)
                 {
                     joystickController.Thrust += thrustVariation;
