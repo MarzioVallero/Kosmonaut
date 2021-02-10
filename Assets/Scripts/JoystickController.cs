@@ -21,6 +21,7 @@ public class JoystickController : MonoBehaviour
     public bool enable = true;    
     public bool fault = false;
     public bool enableVibration = true;
+    public string jType = "XBOX";
     /*[HideInInspector]*/ public float Thrust;
     /*[HideInInspector]*/ public float Torque;
     bool lastVibrationSetting = true;
@@ -94,6 +95,52 @@ public class JoystickController : MonoBehaviour
         enable = true;
     }
 
+    string controllerParser(string axisName)
+    {
+        string res = "";
+        
+        if(jType == "XBOX")
+        {
+            if (axisName == "HorizontalRight")
+            {
+                res = "JoystickHorizontalRight";
+            }
+            else if (axisName == "VerticalRight")
+            {
+                res = "JoystickVerticalRight";
+            }
+            else if (axisName == "TriggerRight")
+            {
+                res = "JoystickTriggers";
+            }
+            else if (axisName == "TriggerLeft")
+            {
+                res = "JoystickTriggers";
+            }
+        }
+        else if (jType == "PS")
+        {
+            if (axisName == "HorizontalRight")
+            {
+                res = "JoystickTriggers";
+            }
+            else if (axisName == "VerticalRight")
+            {
+                res = "PSVerticalRight";
+            }
+            else if (axisName == "TriggerRight")
+            {
+                res = "JoystickVerticalRight";
+            }
+            else if (axisName == "TriggerLeft")
+            {
+                res = "JoystickHorizontalRight";
+            }
+        }
+
+        return res;
+    }
+
     void Update()
     {
         if (enable && !fault)
@@ -101,9 +148,10 @@ public class JoystickController : MonoBehaviour
             //Handle the Input
             float h = Input.GetAxis("JoystickHorizontalLeft");
             float v = Input.GetAxis("JoystickVerticalLeft");
-            float rh = Input.GetAxis("JoystickHorizontalRight");
-            float rv = Input.GetAxis("JoystickVerticalRight");
-            float tr = Input.GetAxis("JoystickTriggers");
+            float rh = Input.GetAxis(controllerParser("HorizontalRight"));
+            float rv = Input.GetAxis(controllerParser("VerticalRight"));
+            float trR = Input.GetAxis(controllerParser("TriggerRight"));
+            float trL = Input.GetAxis(controllerParser("TriggerLeft"));
             bool rbumper = Input.GetButton("RB");
             bool lbumper = Input.GetButton("LB");
             state = GamePad.GetState(playerIndex);
@@ -184,14 +232,14 @@ public class JoystickController : MonoBehaviour
                 if (FireThruster != null)
                     FireThruster("DownThrusterAudio");
             }
-            if (tr > 0.0f)
+            if (trR > 0.0f)
             {
                 rb.AddRelativeForce(Vector3.forward * Thrust);
                 VibrateController(playerIndex, state.Triggers.Left, state.Triggers.Right);
                 if (FireThruster != null)
                     FireThruster("BackThrusterAudio");
             }
-            if (tr < 0.0f)
+            if ((trL < 0.0f && jType == "XBOX") || (trL > 0.0f && jType == "PS"))
             {
                 rb.AddRelativeForce(Vector3.back * Thrust);
                 VibrateController(playerIndex, state.Triggers.Left, state.Triggers.Right);
@@ -233,7 +281,7 @@ public class JoystickController : MonoBehaviour
                     FireThruster("FrontThrusterAudio");
                 }
             }
-            if (h == 0 && v == 0 && rh == 0 && rv == 0 && tr == 0 && rbumper == false && lbumper == false)
+            if (h == 0 && v == 0 && rh == 0 && rv == 0 && trR == 0 && rbumper == false && lbumper == false)
             {
                 if (intensity > 0.0f)
                     intensity -= 0.2f;

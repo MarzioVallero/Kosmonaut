@@ -84,6 +84,7 @@ public class Target : MonoBehaviour
     {
         GameObject soyuz = GameObject.Find("Soyuz");
         JoystickController joystickController = soyuz.GetComponent<JoystickController>();
+        UIdata uiData = soyuz.GetComponent<UIdata>();
         DotweenController dotweenController = GetComponent<DotweenController>();
 
         float thrustVariation = joystickController.InitialThrust * 0.5f;
@@ -107,6 +108,19 @@ public class Target : MonoBehaviour
                     joystickController.Torque += torqueVariation;
                 }
                 break;
+            case 2:
+                if(uiData.language == "Russian")
+                {
+                    uiData.language = "English";
+                    uiData.status = "SEEKING  ";
+                }  
+                else if (uiData.language == "English")
+                {
+                    uiData.language = "Russian";
+                    uiData.status = "ЗАХВАТ  ";
+                }
+                break;
+
         }
     }
 
