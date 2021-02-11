@@ -4292,7 +4292,7 @@ PrefabInstance:
     - target: {fileID: 6438459890079909622, guid: 428e576c8ee9ba24291976bb4e20db05,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 30
+      value: 700
       objectReference: {fileID: 0}
     - target: {fileID: 6438459890079909622, guid: 428e576c8ee9ba24291976bb4e20db05,
         type: 3}
@@ -7800,6 +7800,8 @@ MonoBehaviour:
   VariableNamesRight: {fileID: 863295465}
   Soyuz: {fileID: 1201305782}
   ISS: {fileID: 1262194205}
+  language: Russian
+  status: "\u0417\u0410\u0425\u0412\u0410\u0422  "
 --- !u!65 &1201305778
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7929,6 +7931,7 @@ MonoBehaviour:
   enable: 1
   fault: 0
   enableVibration: 1
+  jType: XBOX
   Thrust: 129
   Torque: 0.5
 --- !u!114 &1201305784
@@ -11540,7 +11543,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1962068942}
   - component: {fileID: 1962068943}
-  - component: {fileID: 1962068944}
   - component: {fileID: 1962068945}
   m_Layer: 0
   m_Name: Directional Light
@@ -11556,13 +11558,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1962068941}
-  m_LocalRotation: {x: -0.00026205185, y: -0.6837276, z: 0.20037773, w: 0.7016874}
-  m_LocalPosition: {x: 6000, y: 30, z: -3000}
+  m_LocalRotation: {x: 0.09772643, y: -0.49185827, z: 0.19589171, w: 0.84270483}
+  m_LocalPosition: {x: 6000, y: 700, z: -3000}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1096854675}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 20.941002, y: -57.846004, z: 14.511001}
 --- !u!108 &1962068943
 Light:
   m_ObjectHideFlags: 0
@@ -11624,30 +11626,6 @@ Light:
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!895512359 &1962068944
-AimConstraint:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1962068941}
-  m_Enabled: 1
-  m_Weight: 1
-  m_RotationAtRest: {x: 13.330301, y: -27.25917, z: 18.232218}
-  m_RotationOffset: {x: 15.9074955, y: -24.82315, z: 17.009094}
-  m_AimVector: {x: 0, y: 0, z: 1}
-  m_UpVector: {x: 0, y: 1, z: 0}
-  m_WorldUpVector: {x: 0, y: 1, z: 0}
-  m_WorldUpObject: {fileID: 0}
-  m_UpType: 0
-  m_AffectRotationX: 1
-  m_AffectRotationY: 1
-  m_AffectRotationZ: 1
-  m_IsContraintActive: 1
-  m_IsLocked: 1
-  m_Sources:
-  - sourceTransform: {fileID: 451652161}
-    weight: 1
 --- !u!123 &1962068945
 LensFlare:
   m_ObjectHideFlags: 0
