@@ -11828,6 +11828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450651834469457}
   - component: {fileID: 398041476}
+  - component: {fileID: 919132147833116396}
   m_Layer: 0
   m_Name: scifiBillboard
   m_TagString: Untagged
@@ -11835,6 +11836,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!65 &919132147833116396
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147833116395}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 26.329433, y: 24.893465, z: 3.2090607}
+  m_Center: {x: -0.094379425, y: 11.078889, z: -0.07889557}
 --- !u!4 &956582256037114750
 Transform:
   m_ObjectHideFlags: 0
