@@ -1827,9 +1827,9 @@ GameObject:
   m_Component:
   - component: {fileID: 449621920}
   - component: {fileID: 449621919}
-  - component: {fileID: 449621918}
   - component: {fileID: 449621917}
   - component: {fileID: 449621916}
+  - component: {fileID: 449621918}
   m_Layer: 0
   m_Name: Screen
   m_TagString: Untagged
@@ -1887,7 +1887,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3213ef79e00911348a8ae5a8048aaff2, type: 2}
+  - {fileID: 2100000, guid: ceb0db4ec8f269642936ccd7460d8a2d, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2176,7 +2176,7 @@ Transform:
   - {fileID: 714998467}
   - {fileID: 4987642586847619532}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &478343026
 MonoBehaviour:
@@ -3101,7 +3101,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4291992436618300, guid: ef134ce1a2a98d94fb68c860d9c736c6, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4291992436618300, guid: ef134ce1a2a98d94fb68c860d9c736c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -5656,7 +5656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4291992436618300, guid: ef134ce1a2a98d94fb68c860d9c736c6, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4291992436618300, guid: ef134ce1a2a98d94fb68c860d9c736c6, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -7221,7 +7221,7 @@ RectTransform:
   m_Children:
   - {fileID: 628887248}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -7637,7 +7637,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1435044743
 GameObject:
@@ -10280,7 +10280,7 @@ RectTransform:
   - {fileID: 1779577229}
   - {fileID: 698507767}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11047,7 +11047,7 @@ RectTransform:
   - {fileID: 2091553040}
   - {fileID: 1632735517}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -11178,7 +11178,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!23 &13837859157956
 MeshRenderer:
@@ -12437,7 +12437,7 @@ Transform:
   - {fileID: 238290065}
   - {fileID: 925528850}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!4 &554461461111933394
 Transform:
@@ -12769,7 +12769,7 @@ Transform:
   - {fileID: 5417074885666666298}
   - {fileID: 1676186089117335120}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &637877789865375075
 MeshFilter:
@@ -13132,6 +13132,7 @@ GameObject:
   - component: {fileID: 543450651834469457}
   - component: {fileID: 398041476}
   - component: {fileID: 919132147833116396}
+  - component: {fileID: 919132147833116397}
   m_Layer: 0
   m_Name: scifiBillboard
   m_TagString: Untagged
@@ -13152,6 +13153,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 26.329433, y: 24.35485, z: 3.2090607}
   m_Center: {x: -0.094379425, y: 11.348196, z: -0.07889557}
+--- !u!328 &919132147833116397
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132147833116395}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 0bb9246d912fb904d9411e810bd66c97, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: c5a6fdff291995c4da55066d71743f0f, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: _MainTex
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
+  m_Url: 
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 1
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
 --- !u!4 &956582256037114750
 Transform:
   m_ObjectHideFlags: 0
@@ -27114,7 +27147,7 @@ Transform:
   - {fileID: 452914271321314172}
   - {fileID: 1165081052}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 180.00002, z: 0}
 --- !u!33 &8140488673512959989
 MeshFilter:

@@ -2859,6 +2859,50 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &554180945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 554180947}
+  - component: {fileID: 554180946}
+  m_Layer: 0
+  m_Name: IndestructableData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &554180946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554180945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 512da12d254d37e4a9ee8a5f13312131, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enableVibration: 1
+--- !u!4 &554180947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554180945}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.8198419, y: 34.018353, z: 249.86012}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &561337288 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2831030068021215500, guid: 9aa1b12c41766624eb66595fe127de5a,
@@ -7985,7 +8029,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1774047890}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10bb40ee16111c54ea496b9d1cc0a66e, type: 3}
+  m_Script: {fileID: 11500000, guid: 20d844a0968fef74bb79d52744a2d456, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioMixer: {fileID: 24100000, guid: 5a301bf1cd3b645478e16cb6aa610149, type: 2}
