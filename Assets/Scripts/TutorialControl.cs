@@ -11,10 +11,14 @@ public class TutorialControl : MonoBehaviour
     private bool horizontal = false;
     private bool vertical = false;
     private bool accelerate = false;
+    private bool firstPlay = false;
     private Transform t;
     private Rigidbody r;
     private Vector3 startPosition;
     private MoveBillboard billboard;
+    public ParticleSystem billboardTrailLeft;
+    public ParticleSystem billboardTrailRight;
+
 
     // Start is called before the first frame update
     void Start()
@@ -96,9 +100,12 @@ public class TutorialControl : MonoBehaviour
                 reset = true;
             }
         }
-        else
+        else if (!firstPlay)
         {
             billboard.state = 1;
+            billboardTrailLeft.Play();
+            billboardTrailRight.Play();
+            firstPlay = true;
         }
     }
 }

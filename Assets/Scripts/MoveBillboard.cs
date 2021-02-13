@@ -5,6 +5,12 @@ using UnityEngine;
 public class MoveBillboard : MonoBehaviour
 {
     public int state = 0;
+    private ParticleSystem[] particles;
+
+    void OnEnable()
+    {
+        particles = this.GetComponentsInChildren<ParticleSystem>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -21,7 +27,8 @@ public class MoveBillboard : MonoBehaviour
                     state = 2;
                 break;
             case 2:
-
+                foreach (ParticleSystem particle in particles)
+                    particle.Stop();
                 break;
         }
     }
