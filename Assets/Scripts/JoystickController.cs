@@ -22,8 +22,8 @@ public class JoystickController : MonoBehaviour
     public bool fault = false;
     public bool enableVibration = true;
     public string jType = "XBOX";
-    /*[HideInInspector]*/ public float Thrust;
-    /*[HideInInspector]*/ public float Torque;
+    [HideInInspector] public float Thrust;
+    [HideInInspector] public float Torque;
     bool lastVibrationSetting = true;
     GamePadState state;
     PlayerIndex playerIndex;

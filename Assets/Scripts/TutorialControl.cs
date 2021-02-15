@@ -5,23 +5,33 @@ using UnityEngine;
 
 public class TutorialControl : MonoBehaviour
 {
-    public bool reset = false;
-    public bool roll = false;
-    public bool pitch = false;
-    public bool yaw = false;
-    public bool horizontal = false;
-    public bool vertical = false;
-    public bool accelerate = false;
-    public bool firstPlay = false;
+    private bool reset = false;
+    private bool roll = false;
+    private bool pitch = false;
+    private bool yaw = false;
+    private bool horizontal = false;
+    private bool vertical = false;
+    private bool accelerate = false;
+    private bool firstPlay = false;
+    /*[HideInInspector]*/ public int click = 0;
+    private bool timed1 = false;
+    private bool timed2 = false;
+    private WaitForSeconds slideDuration;    
     private Transform t;
     private Rigidbody r;
     private Vector3 startPosition;
     private MoveBillboard billboard;
     private VideoPlayer videoPlayer;
+    private GameObject tutorialCanvas;
+    private GameObject one;
+    private GameObject two;
+    private GameObject three;
+    private GameObject four;
     public ParticleSystem billboardTrailLeft;
-    public ParticleSystem billboardTrailRight;
+    public ParticleSystem billboardTrailRight;    
     [SerializeField] private int angleForCompletion = 45;
-    [SerializeField] private float metersForCompletion = 1;
+    [SerializeField] private float metersForCompletion = 1f;
+    [SerializeField] private float activeTime = 3f;
     [SerializeField] private VideoClip rollClip;
     [SerializeField] private VideoClip pitchClip;
     [SerializeField] private VideoClip yawClip;
@@ -38,11 +48,64 @@ public class TutorialControl : MonoBehaviour
         startPosition = t.position;
         billboard = GameObject.Find("scifiBillboard").GetComponent<MoveBillboard>();
         videoPlayer = billboard.GetComponent<VideoPlayer>();
+        tutorialCanvas = GameObject.Find("TutorialCanvas");
+        one = GameObject.Find("1");
+        two = GameObject.Find("2");
+        three = GameObject.Find("3");
+        four = GameObject.Find("4");
+        two.SetActive(false);
+        three.SetActive(false);
+        four.SetActive(false);
+        slideDuration = new WaitForSeconds(activeTime);
+    }
+
+    void TutorialIntro()
+    {
+        switch (click)
+        {
+            case 1:
+                one.SetActive(false);
+                two.SetActive(true);
+                break;
+            case 2:
+                two.SetActive(false);
+                three.SetActive(true);
+                break;
+        }
+        if (three.activeSelf && !timed1)
+        {
+            StartCoroutine(TimedAction1());
+        }
+        if (four.activeSelf && !timed2)
+        {
+            StartCoroutine(TimedAction2());
+        }
+    }
+
+    private IEnumerator TimedAction1()
+    {
+        Debug.Log("start1");
+        timed1 = true;
+        yield return slideDuration;
+        three.SetActive(false);
+        four.SetActive(true);
+        Debug.Log("end1");
+    }
+
+    private IEnumerator TimedAction2()
+    {
+        Debug.Log("start2");
+        timed2 = true;
+        yield return slideDuration;
+        four.SetActive(false);
+        tutorialCanvas.SetActive(false);
+        Debug.Log("end2");
     }
 
     // Update is called once per frame
     void Update()
     {
+        TutorialIntro();
         if (reset)
         {
             Vector3 dir = startPosition - t.position;
@@ -124,5 +187,5 @@ public class TutorialControl : MonoBehaviour
             billboardTrailRight.Play();
             firstPlay = true;
         }
-    }
+    }    
 }
