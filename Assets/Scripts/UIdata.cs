@@ -9,6 +9,9 @@ public class UIdata : MonoBehaviour
     public Text TopLeft;
     public Text Right;
     public Text VariableNamesRight;
+    public TMPro.TextMeshProUGUI button2;
+    public TMPro.TextMeshProUGUI button8;
+    public TMPro.TextMeshProUGUI button9;
     public Rigidbody Soyuz;
     public GameObject ISS;
     public string language = "Russian";
@@ -21,6 +24,9 @@ public class UIdata : MonoBehaviour
     void OnEnable()
     {
         Contact.ExternalContact += textModifier;
+        button2.text = "язык";
+        button8.text = "меньше\nмощность";
+        button9.text = "более\nмощность";
     }
 
     private void Start()

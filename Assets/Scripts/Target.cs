@@ -113,11 +113,17 @@ public class Target : MonoBehaviour
                 {
                     uiData.language = "English";
                     uiData.status = "SEEKING  ";
+                    uiData.button2.text = "LANG";
+                    uiData.button8.text = "LESS\nPOWER";
+                    uiData.button9.text = "MORE\nPOWER";
                 }  
                 else if (uiData.language == "English")
                 {
                     uiData.language = "Russian";
                     uiData.status = "ЗАХВАТ  ";
+                    uiData.button2.text = "язык";
+                    uiData.button8.text = "меньше\nмощность";
+                    uiData.button9.text = "более\nмощность";
                 }
                 break;
 
