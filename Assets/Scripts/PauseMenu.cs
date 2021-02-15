@@ -7,6 +7,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject pauseMenuUI;
     public GameObject fpcontroller;
     public GameObject UICanvas;
+    public AudioSource backgroundAudio;
 
     private FirstPersonLook fpl;
     private TargetShooter targetShooter;
@@ -37,7 +38,9 @@ public class PauseMenu : MonoBehaviour
         fpl.Toggle(true);
         targetShooter.isRaycastActive = false;
         joystickController.ResetVibration(true);
-        gameIsPaused = true;        
+        gameIsPaused = true;
+
+        backgroundAudio.Pause();
     }
 
     public void Resume()
@@ -52,6 +55,8 @@ public class PauseMenu : MonoBehaviour
         targetShooter.isRaycastActive = true;
         joystickController.ResetVibration(false);
         gameIsPaused = false;
+
+        backgroundAudio.Play();
     }
 
     public void QuitToMenu()
