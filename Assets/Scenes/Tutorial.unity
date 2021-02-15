@@ -11742,6 +11742,7 @@ MonoBehaviour:
   pauseMenuUI: {fileID: 2091553039}
   fpcontroller: {fileID: 660102556}
   UICanvas: {fileID: 1350136679}
+  backgroundAudio: {fileID: 0}
 --- !u!114 &2091544957
 MonoBehaviour:
   m_ObjectHideFlags: 0

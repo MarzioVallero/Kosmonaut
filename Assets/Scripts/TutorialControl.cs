@@ -1,23 +1,33 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Video;
 using UnityEngine;
 
 public class TutorialControl : MonoBehaviour
 {
     public bool reset = false;
-    private bool roll = false;
-    private bool pitch = false;
-    private bool yaw = false;
-    private bool horizontal = false;
-    private bool vertical = false;
-    private bool accelerate = false;
-    private bool firstPlay = false;
+    public bool roll = false;
+    public bool pitch = false;
+    public bool yaw = false;
+    public bool horizontal = false;
+    public bool vertical = false;
+    public bool accelerate = false;
+    public bool firstPlay = false;
     private Transform t;
     private Rigidbody r;
     private Vector3 startPosition;
     private MoveBillboard billboard;
+    private VideoPlayer videoPlayer;
     public ParticleSystem billboardTrailLeft;
     public ParticleSystem billboardTrailRight;
+    [SerializeField] private int angleForCompletion = 45;
+    [SerializeField] private float metersForCompletion = 1;
+    [SerializeField] private VideoClip rollClip;
+    [SerializeField] private VideoClip pitchClip;
+    [SerializeField] private VideoClip yawClip;
+    [SerializeField] private VideoClip horizontalClip;
+    [SerializeField] private VideoClip verticalClip;
+    [SerializeField] private VideoClip accelerateClip;
 
 
     // Start is called before the first frame update
@@ -27,6 +37,7 @@ public class TutorialControl : MonoBehaviour
         r = this.GetComponent<Rigidbody>();
         startPosition = t.position;
         billboard = GameObject.Find("scifiBillboard").GetComponent<MoveBillboard>();
+        videoPlayer = billboard.GetComponent<VideoPlayer>();
     }
 
     // Update is called once per frame
@@ -37,12 +48,13 @@ public class TutorialControl : MonoBehaviour
             Vector3 dir = startPosition - t.position;
             t.Translate(dir * 2.0f * Time.deltaTime, Space.World);
             t.rotation = Quaternion.RotateTowards(t.rotation, Quaternion.Euler(Vector3.forward), 1.0f);
-            if ((1 - Mathf.Abs(Quaternion.Dot(t.rotation, Quaternion.Euler(Vector3.forward)))) < 0.002f && Vector3.Distance(t.position, startPosition) < 0.0005f)
+            if ((1 - Mathf.Abs(Quaternion.Dot(t.rotation, Quaternion.Euler(Vector3.forward)))) < 0.001f && Vector3.Distance(t.position, startPosition) < 0.2f)
                 reset = false;
         }
         else if (!roll)
         {
-            if (Quaternion.Angle(t.rotation, Quaternion.Euler(Vector3.forward)) > 90)
+            videoPlayer.clip = rollClip;
+            if (Quaternion.Angle(t.rotation, Quaternion.Euler(Vector3.forward)) > angleForCompletion)
             {
                 r.velocity = Vector3.zero;
                 r.angularVelocity = Vector3.zero;
@@ -52,7 +64,8 @@ public class TutorialControl : MonoBehaviour
         }
         else if (!pitch)
         {
-            if (Quaternion.Angle(t.rotation, Quaternion.Euler(Vector3.right)) > 90)
+            videoPlayer.clip = pitchClip;
+            if (Quaternion.Angle(t.rotation, Quaternion.Euler(Vector3.right)) > angleForCompletion)
             {
                 r.velocity = Vector3.zero;
                 r.angularVelocity = Vector3.zero;
@@ -62,7 +75,8 @@ public class TutorialControl : MonoBehaviour
         }
         else if (!yaw)
         {
-            if (Quaternion.Angle(t.rotation, Quaternion.Euler(Vector3.up)) > 90)
+            videoPlayer.clip = yawClip;
+            if (Quaternion.Angle(t.rotation, Quaternion.Euler(Vector3.up)) > angleForCompletion)
             {
                 r.velocity = Vector3.zero;
                 r.angularVelocity = Vector3.zero;
@@ -72,7 +86,8 @@ public class TutorialControl : MonoBehaviour
         }
         else if (!horizontal)
         {
-            if (t.position.x > startPosition.x + 2 || t.position.x < startPosition.x - 2)
+            videoPlayer.clip = horizontalClip;
+            if (t.position.x > startPosition.x + metersForCompletion || t.position.x < startPosition.x - metersForCompletion)
             {
                 r.velocity = Vector3.zero;
                 r.angularVelocity = Vector3.zero;
@@ -82,7 +97,8 @@ public class TutorialControl : MonoBehaviour
         }
         else if (!vertical)
         {
-            if (t.position.y > startPosition.y + 2 || t.position.y < startPosition.y - 2)
+            videoPlayer.clip = verticalClip;
+            if (t.position.y > startPosition.y + metersForCompletion || t.position.y < startPosition.y - metersForCompletion)
             {
                 r.velocity = Vector3.zero;
                 r.angularVelocity = Vector3.zero;
@@ -92,7 +108,8 @@ public class TutorialControl : MonoBehaviour
         }
         else if (!accelerate)
         {
-            if (t.position.z > startPosition.z + 2 || t.position.z < startPosition.z - 2)
+            videoPlayer.clip = accelerateClip;
+            if (t.position.z > startPosition.z + metersForCompletion || t.position.z < startPosition.z - metersForCompletion)
             {
                 r.velocity = Vector3.zero;
                 r.angularVelocity = Vector3.zero;

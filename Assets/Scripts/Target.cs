@@ -9,6 +9,7 @@ public class Target : MonoBehaviour
     public Camera FpsCam;
     public Camera ScreenCam;
     public Camera FplCam;
+    public GameObject UICanvas;
 
     private Renderer _renderer;
     private Material originalMaterial;
@@ -17,11 +18,10 @@ public class Target : MonoBehaviour
     private bool fpsCam = true;
     private FirstPersonLook fpl;
     private bool disableOutline = false;
-    private GameObject UICanvas;
 
     void Start()
     {
-        UICanvas = GameObject.Find("UICanvas");
+        //UICanvas = GameObject.Find("UICanvas");
 
         _renderer = GetComponent<Renderer>();
         originalMaterial = _renderer.material;
@@ -40,6 +40,7 @@ public class Target : MonoBehaviour
         }
         if (isScreen)
         {
+            outline.OutlineWidth = 10f;
             FpsCam.enabled = fpsCam;
             ScreenCam.enabled = !fpsCam;
             fpl = FplCam.GetComponent<FirstPersonLook>();
@@ -109,6 +110,7 @@ public class Target : MonoBehaviour
                 }
                 break;
             case 2:
+                dotweenController.RunPressAnimation();
                 if(uiData.language == "Russian")
                 {
                     uiData.language = "English";

@@ -3,7 +3,62 @@ guid: 81e592ca9ee3bd84386e2ae11a0e8756
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Aft Ant Back
+    second: {fileID: 2100000, guid: 36eaa200121146a47bc942b762619647, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bianco Metallico comune.002
+    second: {fileID: 2100000, guid: 933cc57102e3e24489a39126b4e84377, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Materiale_12
+    second: {fileID: 2100000, guid: a8988699b7f1fd94babe065720ad6938, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Materiale_1720
+    second: {fileID: 2100000, guid: c89a94aa46cc051409bd9495bd7fd162, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Materiale_2
+    second: {fileID: 2100000, guid: 06b760e1c1ea2c848b9ed2d6b745977f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Materiale_2.003
+    second: {fileID: 2100000, guid: 194a3a099a4e63e43b5b088f69280b89, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Materiale_2.004
+    second: {fileID: 2100000, guid: 170a9d31524b6374880bc15e504a8fea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Materiale_251
+    second: {fileID: 2100000, guid: 47e948870f9d38b4abfedcbe85ff0756, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pannelli interni.002
+    second: {fileID: 2100000, guid: 1d7271d2c45ee684a8ac0a81ba721b11, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aluminium_blurry
+    second: {fileID: 2100000, guid: e3da6fbc1a53b034d9c8985cca192a20, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aluminium_matteBlack
+    second: {fileID: 2100000, guid: 5312f448682731f4294eebe17b3faaff, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0

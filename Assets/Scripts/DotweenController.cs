@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class DotweenController : MonoBehaviour
 {
-    [SerializeField] private float _moveDuration = 1.0f;
-    [SerializeField] private float _zMovement = 0.04f;
+    [SerializeField] private float _moveDuration = 0.1f;
+    [SerializeField] private float _zMovement = 0.003f;
     [SerializeField] private Ease _moveEase = Ease.Linear;
     private Vector3 _targetLocation;
     private Vector3 _originalLocation;
@@ -15,7 +15,7 @@ public class DotweenController : MonoBehaviour
     {
         _originalLocation = transform.position;
         Debug.Log(_originalLocation);
-        _targetLocation = new Vector3(transform.position.x, transform.position.y, transform.position.z - _zMovement);
+        _targetLocation = new Vector3(transform.position.x + _zMovement, transform.position.y, transform.position.z);
         transform.DOMove(_targetLocation, _moveDuration).SetEase(_moveEase)
             .OnComplete(() => transform.DOMove(_originalLocation, _moveDuration).SetEase(_moveEase));
         //transform.DOMove(_originalLocation, _moveDuration).SetEase(_moveEase);

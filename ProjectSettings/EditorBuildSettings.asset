@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/Scenes/Main Scene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 0
-    path: Assets/Scenes/Gian.unity
+    path: Assets/Scenes/GianMain.unity
     guid: 09fbdac788a2f80418309e57a9004eeb
   m_configObjects: {}
