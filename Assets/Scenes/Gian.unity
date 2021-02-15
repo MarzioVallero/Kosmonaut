@@ -13081,6 +13081,9 @@ MonoBehaviour:
   TopLeft: {fileID: 143644305}
   Right: {fileID: 53248755}
   VariableNamesRight: {fileID: 1704433033}
+  button2: {fileID: 0}
+  button8: {fileID: 0}
+  button9: {fileID: 0}
   Soyuz: {fileID: 1952284837}
   ISS: {fileID: 1798336479}
   language: Russian
