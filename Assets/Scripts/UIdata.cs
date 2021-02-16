@@ -15,8 +15,8 @@ public class UIdata : MonoBehaviour
     public TMPro.TextMeshProUGUI button9;
     public Rigidbody Soyuz;
     public GameObject ISS;
-    public string language = "Russian";
-    public string status = "ЗАХВАТ  ";
+    public string language = "English";
+    public string status = "SEEKING";
     public bool UIenable = true;
 
     private float relativeVelocity;
@@ -27,10 +27,10 @@ public class UIdata : MonoBehaviour
     void OnEnable()
     {
         Contact.ExternalContact += textModifier;
-        button2.text = "язык";
-        button3.text = "пи";
-        button8.text = "меньше\nмощность";
-        button9.text = "более\nмощность";
+        button2.text = "LANG";
+        button3.text = "UI";
+        button8.text = "LESS\nPOWER";
+        button9.text = "MORE\nPOWER";
     }
 
     private void Start()
@@ -52,35 +52,8 @@ public class UIdata : MonoBehaviour
             else
                 relativeVelocity = -Soyuz.velocity.magnitude;
 
-            if (language == "Russian")
-            {
-                TopLeft.text = "Ф44 СБЛИЖЕНИЕ\n" +
-                           "        ОБЛЕТ " + status + "      ЛСК\n" +
-                           "Б12\n" +
-                           "ДУС 123   1\n" +
-                           "Р 181.5\n" +
-                           "С1.71001";
-                Bottom.text = "Ф    ρ        " + (0.001 * (Soyuz.transform.position - ISS.transform.position).magnitude).ToString("F3") +
-                    " KM        ΩY " + Vector3.Angle(soyuzY, omegaY).ToString("F3") + "    " +
-                    (Vector3.Angle(soyuzY, omegaY) + errorDistance).ToString("F3") + "\n" +
-                    "       ρ˙      " + relativeVelocity.ToString("F2") +
-                    " М/С         ΩZ " + Vector3.Angle(soyuzZ, omegaZ).ToString("F3") + "    " +
-                    (Vector3.Angle(soyuzZ, omegaZ) + errorDistance).ToString("F3") + "\n";
-                Right.text = "T = " + System.DateTime.Now.ToString("hh:mm:ss") + "\n" +
-                    "ГСО  1234 " + "\n" +
-                    Soyuz.angularVelocity.x.ToString("F3") + "\n" +
-                    Soyuz.angularVelocity.y.ToString("F3") + "\n" +
-                    Soyuz.angularVelocity.z.ToString("F3") + "\n" +
-                    "КУРС 1\n" +
-                    Soyuz.rotation.z.ToString("F2") + "\n" +
-                    Soyuz.rotation.x.ToString("F2") + "\n" +
-                    Soyuz.rotation.y.ToString("F2") + "\n" +
-                    (ISS.transform.position.x - Soyuz.transform.position.x).ToString("F2") + "\n" +
-                    (ISS.transform.position.y - Soyuz.transform.position.y).ToString("F2") + "\n" +
-                    (0.001 * ((Soyuz.transform.position - ISS.transform.position).magnitude + errorDistance)).ToString("F3") + "\n" +
-                    (relativeVelocity + errorVelocity).ToString("F2") + "  \n";
-            }
-            else if (language == "English")
+            
+            if (language == "English")
             {
                 TopLeft.text = "Phase 44 APPROACH\n" +
                            "        FLIGHT " + status + "      LSK\n" +
@@ -108,6 +81,34 @@ public class UIdata : MonoBehaviour
                     (0.001 * ((Soyuz.transform.position - ISS.transform.position).magnitude + errorDistance)).ToString("F3") + "\n" +
                     (relativeVelocity + errorVelocity).ToString("F2") + "  \n";
 
+            }
+            else if (language == "Russian")
+            {
+                TopLeft.text = "Ф44 СБЛИЖЕНИЕ\n" +
+                           "        ОБЛЕТ " + status + "      ЛСК\n" +
+                           "Б12\n" +
+                           "ДУС 123   1\n" +
+                           "Р 181.5\n" +
+                           "С1.71001";
+                Bottom.text = "Ф    ρ        " + (0.001 * (Soyuz.transform.position - ISS.transform.position).magnitude).ToString("F3") +
+                    " KM        ΩY " + Vector3.Angle(soyuzY, omegaY).ToString("F3") + "    " +
+                    (Vector3.Angle(soyuzY, omegaY) + errorDistance).ToString("F3") + "\n" +
+                    "       ρ˙      " + relativeVelocity.ToString("F2") +
+                    " М/С         ΩZ " + Vector3.Angle(soyuzZ, omegaZ).ToString("F3") + "    " +
+                    (Vector3.Angle(soyuzZ, omegaZ) + errorDistance).ToString("F3") + "\n";
+                Right.text = "T = " + System.DateTime.Now.ToString("hh:mm:ss") + "\n" +
+                    "ГСО  1234 " + "\n" +
+                    Soyuz.angularVelocity.x.ToString("F3") + "\n" +
+                    Soyuz.angularVelocity.y.ToString("F3") + "\n" +
+                    Soyuz.angularVelocity.z.ToString("F3") + "\n" +
+                    "КУРС 1\n" +
+                    Soyuz.rotation.z.ToString("F2") + "\n" +
+                    Soyuz.rotation.x.ToString("F2") + "\n" +
+                    Soyuz.rotation.y.ToString("F2") + "\n" +
+                    (ISS.transform.position.x - Soyuz.transform.position.x).ToString("F2") + "\n" +
+                    (ISS.transform.position.y - Soyuz.transform.position.y).ToString("F2") + "\n" +
+                    (0.001 * ((Soyuz.transform.position - ISS.transform.position).magnitude + errorDistance)).ToString("F3") + "\n" +
+                    (relativeVelocity + errorVelocity).ToString("F2") + "  \n";
             }
 
             VariableNamesRight.text = "\n\n  ωX\n  ωY\n  ωZ\n\n   γ\n   ψ\n   θ\nψ ~\nθ ~\nρ  \nρ˙ \n";

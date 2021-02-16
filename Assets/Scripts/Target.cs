@@ -76,7 +76,8 @@ public class Target : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Tutorial" || SceneManager.GetActiveScene().name == "GianTutorial")
         {
             TutorialControl tutorialControl = GameObject.Find("Soyuz").GetComponent<TutorialControl>();
-            if (tutorialControl.click <= 2) tutorialControl.click++;
+            if (tutorialControl.click <= 2)
+                tutorialControl.click++;
         }
 
         fpsCam = !fpsCam;
