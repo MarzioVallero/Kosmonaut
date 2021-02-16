@@ -42,15 +42,18 @@ public class FirstPersonLook : MonoBehaviour
         {
             isActive = false;
             Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
         }
         else if(ScreenCam.enabled)
         {
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
         else
         {
             isActive = true;
             Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
         }
     }
 }
