@@ -21,7 +21,7 @@ public class MoveBillboard : MonoBehaviour
 
                 break;
             case 1:
-                if (this.transform.position.y < 70)
+                if (this.transform.position.y < 90)
                     this.transform.Translate(Vector3.up * 10 * Time.deltaTime, Space.World);
                 else
                     state = 2;
