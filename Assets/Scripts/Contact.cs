@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Contact : MonoBehaviour
-{
+{    
+    [SerializeField] private GameObject menuCanvas;
+    [SerializeField] private GameObject pauseMenu;
+    [SerializeField] private GameObject endGame;
     public delegate void ContactAction();
     public static event ContactAction FaultyContact;
     public static event ContactAction ExternalContact;
@@ -25,6 +28,9 @@ public class Contact : MonoBehaviour
         if (collision.gameObject == ExternalTarget && impactAngle < 0.1 && velocity < 0.5)
         {
             Debug.Log("Alignment!");
+            menuCanvas.GetComponent<PauseMenu>().Pause();
+            pauseMenu.SetActive(false);
+            endGame.SetActive(true);
             if (ExternalContact != null)
                 ExternalContact();
         }

@@ -2102,6 +2102,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1549031711, guid: 5b4fe253074e6a34da29e8cf3cd4ac22, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadMainLevel
+      objectReference: {fileID: 0}
     - target: {fileID: 133353913973638052, guid: 5b4fe253074e6a34da29e8cf3cd4ac22,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7101,6 +7105,12 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!1 &445833243 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 445833243, guid: 5b4fe253074e6a34da29e8cf3cd4ac22,
+    type: 3}
+  m_PrefabInstance: {fileID: 308291436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &449205594
 GameObject:
   m_ObjectHideFlags: 0
@@ -11889,6 +11899,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1820134268}
   m_CullTransparentMesh: 0
+--- !u!1 &1828958455 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 133353913973638056, guid: 5b4fe253074e6a34da29e8cf3cd4ac22,
+    type: 3}
+  m_PrefabInstance: {fileID: 308291436}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1830815075
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11973,6 +11989,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 9d3bae15701eb074fa8d5f43a0404084,
     type: 3}
   m_PrefabInstance: {fileID: 1830815075}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1840174162 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 133353914662574180, guid: 5b4fe253074e6a34da29e8cf3cd4ac22,
+    type: 3}
+  m_PrefabInstance: {fileID: 308291436}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1843103929
 GameObject:
@@ -13672,6 +13694,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e202a0e1ff6b634193e0663fd416434, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuCanvas: {fileID: 1828958455}
+  pauseMenu: {fileID: 1840174162}
+  endGame: {fileID: 445833243}
   ExternalTarget: {fileID: 1798336479}
   Soyuz: {fileID: 1952284837}
   MaxForce: 0.05
@@ -13694,12 +13719,14 @@ MonoBehaviour:
   Right: {fileID: 1673561400}
   VariableNamesRight: {fileID: 592238619}
   button2: {fileID: 1820134270}
+  button3: {fileID: 0}
   button8: {fileID: 2083003028}
   button9: {fileID: 1160598446}
   Soyuz: {fileID: 1952284837}
   ISS: {fileID: 1798336479}
   language: Russian
   status: "\u0417\u0410\u0425\u0412\u0410\u0422  "
+  UIenable: 1
 --- !u!114 &1952284836
 MonoBehaviour:
   m_ObjectHideFlags: 0

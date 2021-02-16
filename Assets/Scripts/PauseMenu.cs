@@ -5,6 +5,7 @@ public class PauseMenu : MonoBehaviour
 {
     public bool gameIsPaused = false;
     public GameObject pauseMenuUI;
+    public GameObject optionsMenuUI;
     public GameObject fpcontroller;
     public GameObject UICanvas;
     public AudioSource backgroundAudio;
@@ -48,6 +49,8 @@ public class PauseMenu : MonoBehaviour
         GameObject soyuz = GameObject.Find("Soyuz");
         JoystickController joystickController = soyuz.GetComponent<JoystickController>();
 
+        if (optionsMenuUI.activeSelf) optionsMenuUI.SetActive(false);
+
         pauseMenuUI.SetActive(false);
         UICanvas.SetActive(true);
         Time.timeScale = 1f;
@@ -62,5 +65,10 @@ public class PauseMenu : MonoBehaviour
     public void QuitToMenu()
     {
         SceneManager.LoadScene(0);
+    }
+
+    public void LoadMainLevel()
+    {
+        SceneManager.LoadScene(1);
     }
 }
