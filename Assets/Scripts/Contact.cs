@@ -7,6 +7,7 @@ public class Contact : MonoBehaviour
     [SerializeField] private GameObject menuCanvas;
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject endGame;
+    [SerializeField] private GameObject gameOver;
     public delegate void ContactAction();
     public static event ContactAction FaultyContact;
     public static event ContactAction ExternalContact;
@@ -20,6 +21,7 @@ public class Contact : MonoBehaviour
 
     private float repulseForce = 2000;
     private float repulseRotation = 200;
+    private WaitForSeconds waitTime;
 
     private void OnTriggerEnter(Collider collision)
     {
@@ -28,9 +30,7 @@ public class Contact : MonoBehaviour
         if (collision.gameObject == ExternalTarget && impactAngle < 0.1 && velocity < 0.5)
         {
             Debug.Log("Alignment!");
-            menuCanvas.GetComponent<PauseMenu>().Pause();
-            pauseMenu.SetActive(false);
-            endGame.SetActive(true);
+            EndGame(true);            
             if (ExternalContact != null)
                 ExternalContact();
         }
@@ -57,12 +57,41 @@ public class Contact : MonoBehaviour
         {
             if (ExcessiveContact != null)
                 ExcessiveContact();
+                Debug.Log("Excessive contact");
+                EndGame(false);
         }
     }
 
     private void Update()
     {
         if (autodestruct && ExcessiveContact != null)
-                ExcessiveContact();
+        {
+            ExcessiveContact();
+            EndGame(false);
+        }
+    }
+
+    private void EndGame(bool victory)
+    {
+        menuCanvas.GetComponent<PauseMenu>().Pause();
+        pauseMenu.SetActive(false);
+        Time.timeScale = 1f;
+        waitTime = new WaitForSeconds(3f);
+        StartCoroutine(TimedAction());
+
+        if (victory)
+        {
+            endGame.SetActive(true);
+        }
+        else
+        {            
+            gameOver.SetActive(true);            
+        }
+    }
+
+    private IEnumerator TimedAction()
+    {
+        yield return waitTime;
+        Time.timeScale = 0f;
     }
 }

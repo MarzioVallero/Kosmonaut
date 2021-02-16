@@ -96,6 +96,12 @@ public class JoystickController : MonoBehaviour
         
     }
 
+    void CheatCodes()
+    {
+        if (Input.GetKeyDown(KeyCode.Z)) enable = false;
+        if (Input.GetKeyDown(KeyCode.X)) gameObject.GetComponent<Contact>().autodestruct = true;
+    }
+
     IEnumerator waiter()
     {
         yield return new WaitForSeconds(10);
@@ -151,6 +157,7 @@ public class JoystickController : MonoBehaviour
 
     void Update()
     {
+        CheatCodes();
         if (enable && !fault)
         {
             //Handle the Input
