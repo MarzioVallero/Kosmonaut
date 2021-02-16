@@ -8,6 +8,7 @@ public class JoystickController : MonoBehaviour
     public delegate void ThrustAction(string name);
     public static event ThrustAction FireThruster;
     public static event ThrustAction StopThruster;
+    private SettingsManager settingsManager;
 
     public Camera Camera;
     public float InitialTorque = 0.5f;
@@ -34,6 +35,11 @@ public class JoystickController : MonoBehaviour
     {
         Thrust = InitialThrust;
         Torque = InitialTorque;
+
+
+        GameObject tmp = GameObject.Find("IndestructableData");
+        settingsManager = tmp.GetComponent<SettingsManager>();
+        jType = settingsManager.controllerType;
     }
 
     void OnEnable()

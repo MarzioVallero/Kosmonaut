@@ -92,7 +92,15 @@ public class OptionsMenu : MonoBehaviour
         {
             settingsManager.enableVibration = enableVibration;
         }
-        
+    }
+
+    public void SetController(int controllerIndex)
+    {
+        Debug.Log(controllerIndex);
+        if (settingsManager.controllerType == "XBOX")
+            settingsManager.controllerType = "PlayStation";
+        else if (settingsManager.controllerType == "PlayStation")
+            settingsManager.controllerType = "XBOX";
     }
 }
 

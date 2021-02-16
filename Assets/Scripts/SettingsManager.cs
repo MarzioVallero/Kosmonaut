@@ -5,6 +5,7 @@ using UnityEngine;
 public class SettingsManager : MonoBehaviour
 {
     public bool enableVibration = true;
+    public string controllerType = "XBOX";
 
     void Awake()
     {
