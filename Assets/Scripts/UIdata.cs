@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class UIdata : MonoBehaviour
 {
@@ -31,6 +32,10 @@ public class UIdata : MonoBehaviour
         button3.text = "UI";
         button8.text = "LESS\nPOWER";
         button9.text = "MORE\nPOWER";
+        if (SceneManager.GetActiveScene().name == "Main Scene")
+            UIenable = true;
+        else
+            UIenable = false;
     }
 
     private void Start()

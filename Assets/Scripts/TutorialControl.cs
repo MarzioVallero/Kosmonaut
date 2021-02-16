@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class TutorialControl : MonoBehaviour
 {
-    private bool reset = false;
+    public bool reset = false;
     private bool roll = false;
     private bool pitch = false;
     private bool yaw = false;
@@ -19,6 +19,7 @@ public class TutorialControl : MonoBehaviour
     private Transform t;
     private Rigidbody r;
     private Vector3 startPosition;
+    private Quaternion startRotation;
     private MoveBillboard billboard;
     private VideoPlayer videoPlayer;
     private GameObject tutorialCanvas;    
@@ -44,6 +45,7 @@ public class TutorialControl : MonoBehaviour
         t = this.GetComponent<Transform>();
         r = this.GetComponent<Rigidbody>();
         startPosition = t.position;
+        startRotation = t.rotation;
         billboard = GameObject.Find("scifiBillboard").GetComponent<MoveBillboard>();
         videoPlayer = billboard.GetComponent<VideoPlayer>();
         waitTime = popUpDuration;
@@ -117,8 +119,12 @@ public class TutorialControl : MonoBehaviour
             Vector3 dir = startPosition - t.position;
             t.Translate(dir * 2.0f * Time.deltaTime, Space.World);
             t.rotation = Quaternion.RotateTowards(t.rotation, Quaternion.Euler(Vector3.forward), 1.0f);
-            if ((1 - Mathf.Abs(Quaternion.Dot(t.rotation, Quaternion.Euler(Vector3.forward)))) < 0.001f && Vector3.Distance(t.position, startPosition) < 0.2f)
+            if ((1 - Mathf.Abs(Quaternion.Dot(t.rotation, Quaternion.Euler(Vector3.forward)))) < 0.0005f && Vector3.Distance(t.position, startPosition) < 0.05f)
+            {
                 reset = false;
+                t.position = startPosition;
+                t.rotation = startRotation;
+            }    
         }
         else if (!roll)
         {

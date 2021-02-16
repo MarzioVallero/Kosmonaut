@@ -1955,6 +1955,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ce99465322d6b74b95961478614033c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reset: 0
   click: 0
   billboardTrailLeft: {fileID: 424802267}
   billboardTrailRight: {fileID: 562351082}
@@ -2032,7 +2033,7 @@ MonoBehaviour:
   ISS: {fileID: 1329368063}
   language: English
   status: SEEKING
-  UIenable: 1
+  UIenable: 0
 --- !u!114 &156451408
 MonoBehaviour:
   m_ObjectHideFlags: 0
