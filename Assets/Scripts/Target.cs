@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class Target : MonoBehaviour
 {
@@ -72,8 +73,11 @@ public class Target : MonoBehaviour
 
     private void SwitchCamera()
     {
-        TutorialControl tutorialControl = GameObject.Find("Soyuz").GetComponent<TutorialControl>();
-        if(tutorialControl.click <= 2) tutorialControl.click++;
+        if (SceneManager.GetActiveScene().name == "Tutorial" || SceneManager.GetActiveScene().name == "GianTutorial")
+        {
+            TutorialControl tutorialControl = GameObject.Find("Soyuz").GetComponent<TutorialControl>();
+            if (tutorialControl.click <= 2) tutorialControl.click++;
+        }
 
         fpsCam = !fpsCam;
         UICanvas.SetActive(fpsCam);
@@ -119,6 +123,7 @@ public class Target : MonoBehaviour
                     uiData.language = "English";
                     uiData.status = "SEEKING  ";
                     uiData.button2.text = "LANG";
+                    uiData.button3.text = "UI";
                     uiData.button8.text = "LESS\nPOWER";
                     uiData.button9.text = "MORE\nPOWER";
                 }  
@@ -127,11 +132,15 @@ public class Target : MonoBehaviour
                     uiData.language = "Russian";
                     uiData.status = "ЗАХВАТ  ";
                     uiData.button2.text = "язык";
+                    uiData.button3.text = "пи";
                     uiData.button8.text = "меньше\nмощность";
                     uiData.button9.text = "более\nмощность";
                 }
                 break;
-
+            case 3:
+                dotweenController.RunPressAnimation();
+                uiData.UIenable = !uiData.UIenable;
+                break;
         }
     }
 
