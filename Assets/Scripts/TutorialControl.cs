@@ -13,25 +13,23 @@ public class TutorialControl : MonoBehaviour
     private bool vertical = false;
     private bool accelerate = false;
     private bool firstPlay = false;
-    /*[HideInInspector]*/ public int click = 0;
-    private bool timed1 = false;
-    private bool timed2 = false;
-    private WaitForSeconds slideDuration;    
+    [HideInInspector] public int click = 0;
+    private int popUpIndex = 0;
+    private float waitTime;
     private Transform t;
     private Rigidbody r;
     private Vector3 startPosition;
     private MoveBillboard billboard;
     private VideoPlayer videoPlayer;
-    private GameObject tutorialCanvas;
-    private GameObject one;
-    private GameObject two;
-    private GameObject three;
-    private GameObject four;
+    private GameObject tutorialCanvas;    
+
     public ParticleSystem billboardTrailLeft;
     public ParticleSystem billboardTrailRight;    
     [SerializeField] private int angleForCompletion = 45;
     [SerializeField] private float metersForCompletion = 1f;
-    [SerializeField] private float activeTime = 3f;
+    [SerializeField] private float popUpDuration = 3f;
+    [SerializeField] private GameObject background;
+    [SerializeField] private GameObject[] popUps;
     [SerializeField] private VideoClip rollClip;
     [SerializeField] private VideoClip pitchClip;
     [SerializeField] private VideoClip yawClip;
@@ -48,64 +46,72 @@ public class TutorialControl : MonoBehaviour
         startPosition = t.position;
         billboard = GameObject.Find("scifiBillboard").GetComponent<MoveBillboard>();
         videoPlayer = billboard.GetComponent<VideoPlayer>();
-        tutorialCanvas = GameObject.Find("TutorialCanvas");
-        one = GameObject.Find("1");
-        two = GameObject.Find("2");
-        three = GameObject.Find("3");
-        four = GameObject.Find("4");
-        two.SetActive(false);
-        three.SetActive(false);
-        four.SetActive(false);
-        slideDuration = new WaitForSeconds(activeTime);
+        waitTime = popUpDuration;
     }
 
-    void TutorialIntro()
+    void TutorialPopUps()
     {
-        switch (click)
+        for (int i = 0; i < popUps.Length; i++)
         {
+            if(i == popUpIndex)
+            {
+                popUps[i].SetActive(true);
+            }
+            else
+            {
+                popUps[i].SetActive(false);
+            }
+        }
+
+        switch (popUpIndex)
+        {
+            case 0:
+                if (click == 1)
+                {
+                    popUpIndex++;
+                }
+                break;
             case 1:
-                one.SetActive(false);
-                two.SetActive(true);
+                if (click == 2)
+                {
+                    popUpIndex++;
+                }
                 break;
             case 2:
-                two.SetActive(false);
-                three.SetActive(true);
+                if (waitTime <= 0)
+                {
+                    popUpIndex++;
+                    waitTime = popUpDuration;
+                }
+                else
+                {
+                    waitTime -= Time.deltaTime;
+                }
+                break;
+            case 3:
+                if (waitTime <= 0)
+                {
+                    popUpIndex++;
+                    background.SetActive(false);
+                }
+                else
+                {
+                    waitTime -= Time.deltaTime;
+                }
+                break;
+            case 4:
+                if (yaw)
+                {
+                    popUpIndex++;
+                }
                 break;
         }
-        if (three.activeSelf && !timed1)
-        {
-            StartCoroutine(TimedAction1());
-        }
-        if (four.activeSelf && !timed2)
-        {
-            StartCoroutine(TimedAction2());
-        }
     }
-
-    private IEnumerator TimedAction1()
-    {
-        Debug.Log("start1");
-        timed1 = true;
-        yield return slideDuration;
-        three.SetActive(false);
-        four.SetActive(true);
-        Debug.Log("end1");
-    }
-
-    private IEnumerator TimedAction2()
-    {
-        Debug.Log("start2");
-        timed2 = true;
-        yield return slideDuration;
-        four.SetActive(false);
-        tutorialCanvas.SetActive(false);
-        Debug.Log("end2");
-    }
-
+    
     // Update is called once per frame
     void Update()
     {
-        TutorialIntro();
+        TutorialPopUps();
         if (reset)
         {
             Vector3 dir = startPosition - t.position;

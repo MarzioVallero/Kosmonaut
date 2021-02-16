@@ -71,7 +71,10 @@ public class Target : MonoBehaviour
     }
 
     private void SwitchCamera()
-    {        
+    {
+        TutorialControl tutorialControl = GameObject.Find("Soyuz").GetComponent<TutorialControl>();
+        if(tutorialControl.click <= 2) tutorialControl.click++;
+
         fpsCam = !fpsCam;
         UICanvas.SetActive(fpsCam);
         FpsCam.enabled = fpsCam;
