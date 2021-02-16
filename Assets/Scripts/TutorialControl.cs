@@ -6,16 +6,18 @@ using UnityEngine;
 public class TutorialControl : MonoBehaviour
 {
     public bool reset = false;
-    private bool roll = false;
-    private bool pitch = false;
-    private bool yaw = false;
-    private bool horizontal = false;
-    private bool vertical = false;
-    private bool accelerate = false;
+    public bool roll = false;
+    public bool pitch = false;
+    public bool yaw = false;
+    public bool horizontal = false;
+    public bool vertical = false;
+    public bool accelerate = false;
+    public bool dockClipPlayed = false;
     private bool firstPlay = false;
     [HideInInspector] public int click = 0;
     private int popUpIndex = 0;
     private float waitTime;
+    private float videoDuration = 30f;
     private Transform t;
     private Rigidbody r;
     private Vector3 startPosition;
@@ -37,6 +39,7 @@ public class TutorialControl : MonoBehaviour
     [SerializeField] private VideoClip horizontalClip;
     [SerializeField] private VideoClip verticalClip;
     [SerializeField] private VideoClip accelerateClip;
+    [SerializeField] private VideoClip dockClip;
 
 
     // Start is called before the first frame update
@@ -94,6 +97,7 @@ public class TutorialControl : MonoBehaviour
                 if (waitTime <= 0)
                 {
                     popUpIndex++;
+                    waitTime = popUpDuration;
                     background.SetActive(false);
                 }
                 else
@@ -105,6 +109,45 @@ public class TutorialControl : MonoBehaviour
                 if (yaw)
                 {
                     popUpIndex++;
+                }
+                break;
+            case 5:
+                if (accelerate)
+                {
+                    popUpIndex++;
+                }
+                break;
+            case 6:
+                if (waitTime <= 0)
+                {
+                    popUpIndex++;
+                    waitTime = popUpDuration;
+                }
+                else
+                {
+                    waitTime -= Time.deltaTime;
+                }
+                break;
+            case 7:
+                if (waitTime <= 0)
+                {
+                    popUpIndex++;
+                    waitTime = popUpDuration;
+                }
+                else
+                {
+                    waitTime -= Time.deltaTime;
+                }
+                break;
+            case 8:
+                if (waitTime <= 0)
+                {
+                    popUpIndex++;
+                    waitTime = popUpDuration;
+                }
+                else
+                {
+                    waitTime -= Time.deltaTime;
                 }
                 break;
         }
@@ -191,6 +234,20 @@ public class TutorialControl : MonoBehaviour
                 accelerate = true;
                 reset = true;
             }
+        }
+        else if (!dockClipPlayed)
+        {
+            videoPlayer.clip = dockClip;
+            videoPlayer.isLooping = false;
+
+            if (videoDuration <= 0)
+            {
+                dockClipPlayed = true;
+            }
+            else
+            {
+                videoDuration -= Time.deltaTime;
+            }            
         }
         else if (!firstPlay)
         {

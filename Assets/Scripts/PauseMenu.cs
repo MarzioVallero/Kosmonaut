@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Video;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -12,6 +13,8 @@ public class PauseMenu : MonoBehaviour
 
     private FirstPersonLook fpl;
     private TargetShooter targetShooter;
+    private MoveBillboard billboard;
+    private VideoPlayer videoPlayer;
 
     private void Start()
     {
@@ -31,7 +34,7 @@ public class PauseMenu : MonoBehaviour
     public void Pause()
     {
         GameObject soyuz = GameObject.Find("Soyuz");
-        JoystickController joystickController = soyuz.GetComponent<JoystickController>();
+        JoystickController joystickController = soyuz.GetComponent<JoystickController>();        
 
         pauseMenuUI.SetActive(true);
         UICanvas.SetActive(false);
@@ -42,6 +45,7 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = true;
 
         backgroundAudio.Pause();
+        PauseResumeVideo(true);
     }
 
     public void Resume()
@@ -60,6 +64,19 @@ public class PauseMenu : MonoBehaviour
         gameIsPaused = false;
 
         backgroundAudio.Play();
+        PauseResumeVideo(false);
+    }
+
+    private void PauseResumeVideo(bool pause)
+    {
+        if (GameObject.Find("scifiBillboard"))
+        {
+            billboard = GameObject.Find("scifiBillboard").GetComponent<MoveBillboard>();
+            videoPlayer = billboard.GetComponent<VideoPlayer>();
+
+            if (pause) videoPlayer.Pause();
+            else videoPlayer.Play();
+        }
     }
 
     public void QuitToMenu()

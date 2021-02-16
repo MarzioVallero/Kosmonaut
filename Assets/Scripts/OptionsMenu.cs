@@ -13,7 +13,7 @@ public class OptionsMenu : MonoBehaviour
     bool enableVibration;
     Resolution[] resolutions;
     GameObject indestructable;
-    SettingsManager settingsManager;
+    SettingsManager settingsManager;    
 
     private void Start()
     {
@@ -48,7 +48,7 @@ public class OptionsMenu : MonoBehaviour
 
         resolutionDropdown.AddOptions(options);
         resolutionDropdown.value = currentResolutionIndex;
-        resolutionDropdown.RefreshShownValue();
+        resolutionDropdown.RefreshShownValue();             
     }
 
     private void ImportSettings(Scene current, Scene next)

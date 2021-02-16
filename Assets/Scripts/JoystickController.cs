@@ -36,10 +36,12 @@ public class JoystickController : MonoBehaviour
         Thrust = InitialThrust;
         Torque = InitialTorque;
 
-
-        GameObject tmp = GameObject.Find("IndestructableData");
-        settingsManager = tmp.GetComponent<SettingsManager>();
-        jType = settingsManager.controllerType;
+        if (GameObject.Find("IndestructableData"))
+        {
+            GameObject tmp = GameObject.Find("IndestructableData");
+            settingsManager = tmp.GetComponent<SettingsManager>();
+            jType = settingsManager.controllerType;
+        }        
     }
 
     void OnEnable()
