@@ -2030,8 +2030,8 @@ MonoBehaviour:
   button9: {fileID: 531937716}
   Soyuz: {fileID: 156451409}
   ISS: {fileID: 1329368063}
-  language: Russian
-  status: "\u0417\u0410\u0425\u0412\u0410\u0422  "
+  language: English
+  status: SEEKING
   UIenable: 1
 --- !u!114 &156451408
 MonoBehaviour:
