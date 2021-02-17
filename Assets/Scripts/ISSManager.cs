@@ -11,12 +11,14 @@ public class ISSManager : MonoBehaviour
     {
         Contact.ExcessiveContact += Explode;
         Contact.ExternalContact += DeactivateColliders;
+        Contact.ExcessiveContact += DeactivateColliders;
     }
 
     private void OnDisable()
     {
         Contact.ExcessiveContact -= Explode;
         Contact.ExternalContact -= DeactivateColliders;
+        Contact.ExcessiveContact -= DeactivateColliders;
     }
 
     void DeactivateColliders()

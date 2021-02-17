@@ -52,7 +52,8 @@ public class Target : MonoBehaviour
     {
         if (_renderer == null)
             return;
-        if (isScreen) SwitchCamera();
+        if (isScreen)
+            SwitchCamera();
         else
         {
             string buttonNumber = gameObject.name.Substring(gameObject.name.Length - 1);

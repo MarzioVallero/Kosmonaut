@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Contact : MonoBehaviour
 {    
@@ -15,7 +16,7 @@ public class Contact : MonoBehaviour
 
     public GameObject ExternalTarget;
     public Rigidbody Soyuz;
-    public float MaxForce = 0.05f;
+    public float MaxSpeed = 0.08f;
     public float MaxAngleImpact = 0.035f;
     public bool autodestruct = false;
 
@@ -27,9 +28,9 @@ public class Contact : MonoBehaviour
     {
         float impactAngle = Vector3.Angle(Soyuz.transform.position, ExternalTarget.transform.position);
         float velocity = Soyuz.velocity.z;
-        if (collision.gameObject == ExternalTarget && impactAngle < 0.1 && velocity < 0.5)
+        if (collision.gameObject == ExternalTarget && impactAngle < 0.1 && velocity < 0.05)
         {
-            Debug.Log("Alignment!");
+            Debug.Log("Alignment! " + impactAngle + " " + velocity);
             EndGame(true);            
             if (ExternalContact != null)
                 ExternalContact();
@@ -42,8 +43,8 @@ public class Contact : MonoBehaviour
         if (rb == null)
             return;
 
-        float force = collision.relativeVelocity.magnitude;
-        if (force < MaxForce)
+        float speed = collision.relativeVelocity.magnitude;
+        if (speed < MaxSpeed)
         {
             Vector3 repulseDir = Soyuz.transform.position - rb.transform.position;
             repulseDir.Normalize();
@@ -68,6 +69,7 @@ public class Contact : MonoBehaviour
         {
             ExcessiveContact();
             EndGame(false);
+            autodestruct = false;
         }
     }
 
@@ -76,8 +78,14 @@ public class Contact : MonoBehaviour
         menuCanvas.GetComponent<PauseMenu>().Pause();
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
-        waitTime = new WaitForSeconds(3f);
+        waitTime = new WaitForSeconds(4f);
         StartCoroutine(TimedAction());
+
+        if (SceneManager.GetActiveScene().name == "Main Scene")
+        {
+            Target endGameCamera = GameObject.Find("EndGameView").GetComponent<Target>();
+            endGameCamera.Activate();
+        }
 
         if (victory)
         {

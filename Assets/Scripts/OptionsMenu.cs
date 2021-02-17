@@ -98,8 +98,8 @@ public class OptionsMenu : MonoBehaviour
     {
         Debug.Log(controllerIndex);
         if (settingsManager.controllerType == "XBOX")
-            settingsManager.controllerType = "PlayStation";
-        else if (settingsManager.controllerType == "PlayStation")
+            settingsManager.controllerType = "PS";
+        else if (settingsManager.controllerType == "PS")
             settingsManager.controllerType = "XBOX";
     }
 }

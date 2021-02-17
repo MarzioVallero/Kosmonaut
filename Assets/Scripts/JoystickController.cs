@@ -98,7 +98,7 @@ public class JoystickController : MonoBehaviour
 
     void CheatCodes()
     {
-        if (Input.GetKeyDown(KeyCode.Z)) enable = false;
+        if (Input.GetKeyDown(KeyCode.Z)) enable = !enable;
         if (Input.GetKeyDown(KeyCode.X)) gameObject.GetComponent<Contact>().autodestruct = true;
     }
 
@@ -109,50 +109,48 @@ public class JoystickController : MonoBehaviour
         enable = true;
     }
 
-    string controllerParser(string axisName)
-    {
-        string res = "";
-        
+    public string controllerParser(string axisName)
+    {        
         if(jType == "XBOX")
         {
             if (axisName == "HorizontalRight")
             {
-                res = "JoystickHorizontalRight";
+                return "JoystickHorizontalRight";
             }
             else if (axisName == "VerticalRight")
             {
-                res = "JoystickVerticalRight";
+                return "JoystickVerticalRight";
             }
             else if (axisName == "TriggerRight")
             {
-                res = "JoystickTriggers";
+                return "JoystickTriggers";
             }
             else if (axisName == "TriggerLeft")
             {
-                res = "JoystickTriggers";
+                return "JoystickTriggers";
             }
         }
         else if (jType == "PS")
         {
             if (axisName == "HorizontalRight")
             {
-                res = "JoystickTriggers";
+                return "JoystickTriggers";
             }
             else if (axisName == "VerticalRight")
             {
-                res = "PSVerticalRight";
+                return "PSVerticalRight";
             }
             else if (axisName == "TriggerRight")
             {
-                res = "JoystickVerticalRight";
+                return "JoystickVerticalRight";
             }
             else if (axisName == "TriggerLeft")
             {
-                res = "JoystickHorizontalRight";
+                return "JoystickHorizontalRight";
             }
         }
 
-        return res;
+        return "";
     }
 
     void Update()
