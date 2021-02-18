@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PropulsorEffectsController : MonoBehaviour
 {
-    public bool enableEffects = true;
+    public bool enableEffects = false;
     public bool fault = false;
 
     public string jType = "XBOX";
@@ -54,6 +54,36 @@ public class PropulsorEffectsController : MonoBehaviour
     {
         Contact.FaultyContact += TmpDisable;
         Contact.ExternalContact += Align;
+    }
+
+    public void StopAll()
+    {
+        right1.Stop();
+        right2.Stop();
+        left1.Stop();
+        left2.Stop();
+        top1.Stop();
+        top2.Stop();
+        bottom1.Stop();
+        bottom2.Stop();
+        topRight.Stop();
+        bottomRight.Stop();
+        topLeft.Stop();
+        bottomLeft.Stop();
+        frontRight.Stop();
+        frontLeft.Stop();
+        back1.Stop();
+        back2.Stop();
+        back3.Stop();
+        back4.Stop();
+        topFront1.Stop();
+        topFront2.Stop();
+        topBack1.Stop();
+        topBack2.Stop();
+        bottomFront1.Stop();
+        bottomFront2.Stop();
+        bottomBack1.Stop();
+        bottomBack2.Stop();
     }
 
     void Align()
@@ -217,32 +247,7 @@ public class PropulsorEffectsController : MonoBehaviour
             }
             if (h == 0 && v == 0 && rh == 0 && rv == 0 && trR == 0 && rbumper == false && lbumper == false)
             {
-                right1.Stop();
-                right2.Stop();
-                left1.Stop();
-                left2.Stop();
-                top1.Stop();
-                top2.Stop();
-                bottom1.Stop();
-                bottom2.Stop();
-                topRight.Stop();
-                bottomRight.Stop();
-                topLeft.Stop();
-                bottomLeft.Stop();
-                frontRight.Stop();
-                frontLeft.Stop();
-                back1.Stop();
-                back2.Stop();
-                back3.Stop();
-                back4.Stop();
-                topFront1.Stop();
-                topFront2.Stop();
-                topBack1.Stop();
-                topBack2.Stop();
-                bottomFront1.Stop();
-                bottomFront2.Stop();
-                bottomBack1.Stop();
-                bottomBack2.Stop();
+                StopAll();
             }
         }
         else if (!enableEffects && !fault)

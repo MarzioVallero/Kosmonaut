@@ -53,14 +53,17 @@ public class Target : MonoBehaviour
     {
         if (_renderer == null)
             return;
+
         if (isScreen)
             SwitchCamera();
-        else
+        
+        if(!isScreen || this.name == "Button_7")
         {
             string buttonNumber = gameObject.name.Substring(gameObject.name.Length - 1);
             ButtonSpecificActions(int.Parse(buttonNumber));
             //StartCoroutine(TimedAction());
         }
+            
     }
 
     /// <summary>
@@ -151,7 +154,8 @@ public class Target : MonoBehaviour
                 if(SceneManager.GetActiveScene().name == "Main Scene")
                 {
                     PropulsorEffectsController effControl = soyuz.GetComponent<PropulsorEffectsController>();
-                    effControl.enableEffects = true;
+                    effControl.enableEffects = !effControl.enableEffects;
+                    effControl.StopAll();
                 }
                 break;
         }
