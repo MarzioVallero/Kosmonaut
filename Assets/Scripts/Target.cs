@@ -148,6 +148,11 @@ public class Target : MonoBehaviour
                 break;
             case 7:
                 dotweenController.RunPressAnimation();
+                if(SceneManager.GetActiveScene().name == "Main Scene")
+                {
+                    PropulsorEffectsController effControl = soyuz.GetComponent<PropulsorEffectsController>();
+                    effControl.enableEffects = true;
+                }
                 break;
         }
     }
