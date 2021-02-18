@@ -12139,7 +12139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da596606ff1d5734788497602fbe367b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enableEffects: 1
+  enableEffects: 0
   fault: 0
   jType: XBOX
   right1: {fileID: 1811430043}
