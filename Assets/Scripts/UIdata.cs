@@ -12,6 +12,7 @@ public class UIdata : MonoBehaviour
     public Text VariableNamesRight;
     public TMPro.TextMeshProUGUI button2;
     public TMPro.TextMeshProUGUI button3;
+    public TMPro.TextMeshProUGUI button7;
     public TMPro.TextMeshProUGUI button8;
     public TMPro.TextMeshProUGUI button9;
     public Rigidbody Soyuz;
@@ -23,13 +24,13 @@ public class UIdata : MonoBehaviour
     private float relativeVelocity;
     private float errorVelocity;
     private float errorDistance;
-    
 
     void OnEnable()
     {
         Contact.ExternalContact += textModifier;
         button2.text = "LANG";
         button3.text = "UI";
+        button7.text = "TPV";
         button8.text = "LESS\nPOWER";
         button9.text = "MORE\nPOWER";
         if (SceneManager.GetActiveScene().name == "Main Scene")

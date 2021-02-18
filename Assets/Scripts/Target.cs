@@ -41,7 +41,8 @@ public class Target : MonoBehaviour
         }
         if (isScreen)
         {
-            outline.OutlineWidth = 10f;
+            if(this.name != "Button_7")
+                outline.OutlineWidth = 10f;
             FpsCam.enabled = fpsCam;
             ScreenCam.enabled = !fpsCam;
             fpl = FplCam.GetComponent<FirstPersonLook>();
@@ -126,6 +127,7 @@ public class Target : MonoBehaviour
                     uiData.status = "SEEKING  ";
                     uiData.button2.text = "LANG";
                     uiData.button3.text = "UI";
+                    uiData.button7.text = "TPV";
                     uiData.button8.text = "LESS\nPOWER";
                     uiData.button9.text = "MORE\nPOWER";
                 }  
@@ -135,6 +137,7 @@ public class Target : MonoBehaviour
                     uiData.status = "ЗАХВАТ  ";
                     uiData.button2.text = "язык";
                     uiData.button3.text = "пи";
+                    uiData.button7.text = "втл";
                     uiData.button8.text = "меньше\nмощность";
                     uiData.button9.text = "более\nмощность";
                 }
@@ -142,6 +145,9 @@ public class Target : MonoBehaviour
             case 3:
                 dotweenController.RunPressAnimation();
                 uiData.UIenable = !uiData.UIenable;
+                break;
+            case 7:
+                dotweenController.RunPressAnimation();
                 break;
         }
     }
