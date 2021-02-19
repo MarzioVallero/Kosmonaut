@@ -73,7 +73,7 @@ public class Contact : MonoBehaviour
         }
     }
 
-    private void EndGame(bool victory)
+    public void EndGame(bool victory)
     {
         menuCanvas.GetComponent<PauseMenu>().Pause();
         pauseMenu.SetActive(false);
