@@ -8281,7 +8281,7 @@ Camera:
   field of view: 60.3
   orthographic: 0
   orthographic size: 5
-  m_Depth: 0
+  m_Depth: 1
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -12074,6 +12074,7 @@ GameObject:
   - component: {fileID: 1201305784}
   - component: {fileID: 1201305785}
   - component: {fileID: 1201305786}
+  - component: {fileID: 1201305787}
   m_Layer: 0
   m_Name: Soyuz
   m_TagString: Untagged
@@ -12318,6 +12319,18 @@ MonoBehaviour:
   bottomFront2: {fileID: 1351751909}
   bottomBack1: {fileID: 1035658015}
   bottomBack2: {fileID: 221097244}
+--- !u!114 &1201305787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201305776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b13fe8e55dd34244a9f49674b12d4a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1205473989 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1936239008600007349, guid: 9aa1b12c41766624eb66595fe127de5a,
@@ -16172,17 +16185,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 928dcbefadc110448a9e0259c1c01a9b,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -100000
+      value: -29857
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 928dcbefadc110448a9e0259c1c01a9b,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -54423
+      value: -17247
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 928dcbefadc110448a9e0259c1c01a9b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 10000
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 928dcbefadc110448a9e0259c1c01a9b,
         type: 3}
@@ -16227,17 +16240,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 928dcbefadc110448a9e0259c1c01a9b,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 928dcbefadc110448a9e0259c1c01a9b,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 928dcbefadc110448a9e0259c1c01a9b,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 928dcbefadc110448a9e0259c1c01a9b,
         type: 3}
@@ -17728,7 +17741,7 @@ LensFlare:
   m_Enabled: 1
   m_Flare: {fileID: 12100000, guid: 8253959e81b5fe946b957132e3ef0f0d, type: 2}
   m_Color: {r: 1, g: 0.63604903, b: 0.23921567, a: 0}
-  m_Brightness: 2
+  m_Brightness: 1
   m_FadeSpeed: 3
   m_IgnoreLayers:
     serializedVersion: 2
