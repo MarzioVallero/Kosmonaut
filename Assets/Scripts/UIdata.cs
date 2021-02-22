@@ -9,9 +9,13 @@ public class UIdata : MonoBehaviour
     public Text Bottom;
     public Text TopLeft;
     public Text Right;
+    private Text Center;
     public Text VariableNamesRight;
     public TMPro.TextMeshProUGUI button2;
     public TMPro.TextMeshProUGUI button3;
+    public TMPro.TextMeshProUGUI button4;
+    public TMPro.TextMeshProUGUI button5;
+    public TMPro.TextMeshProUGUI button6;
     public TMPro.TextMeshProUGUI button7;
     public TMPro.TextMeshProUGUI button8;
     public TMPro.TextMeshProUGUI button9;
@@ -24,17 +28,25 @@ public class UIdata : MonoBehaviour
     private float relativeVelocity;
     private float errorVelocity;
     private float errorDistance;
+    private RandomFailures randScript;
 
     void OnEnable()
     {
         Contact.ExternalContact += textModifier;
         button2.text = "LANG";
         button3.text = "UI";
+        button4.text = "ENGINES\nRESTART";
+        button5.text = "RESET\nCOMMS";
+        button6.text = "RESET\nVS";
         button7.text = "TPV";
         button8.text = "LESS\nPOWER";
         button9.text = "MORE\nPOWER";
         if (SceneManager.GetActiveScene().name == "Main Scene")
+        {
             UIenable = true;
+            randScript = GameObject.Find("Soyuz").GetComponent<RandomFailures>();
+            Center = GameObject.Find("UICenter").GetComponent<Text>();
+        }   
         else
             UIenable = false;
     }
@@ -125,6 +137,61 @@ public class UIdata : MonoBehaviour
             TopLeft.text = "";
             Right.text = "";
             VariableNamesRight.text = "";
+        }
+
+        if (SceneManager.GetActiveScene().name == "Main Scene")
+        {
+            switch (randScript.failureType)
+            {
+                case 1:
+                    if(language == "English")
+                        Center.text = "MAIN ENGINE FAILURE\nRESTART ENGINES";
+                    else if (language == "Russian")
+                        Center.text = "ОТКАЗ ГЛАВНОГО ДВИГАТЕЛЯ\nПЕРЕЗАГРУЗИТЕ ДВИГАТЕЛИ";
+                    break;
+                case 2:
+                    if (language == "English")
+                        Center.text = "CAMERA FAILURE\nDRIVER REBOOTING PENDING";
+                    else if (language == "Russian")
+                        Center.text = "ОТКАЗ КАМЕРЫ\nОЖИДАЕТ ПЕРЕЗАГРУЗКУ ДРАЙВЕРА";
+                    break;
+                case 3:
+                    if (language == "English")
+                        Center.text = "VITAL SUPPORT FAILURE\nOXYGEN DEPLETING IN 30 S";
+                    else if (language == "Russian")
+                        Center.text = "ОТКАЗ ЖИВОЙ ПОДДЕРЖКИ\nУДАЛЕНИЕ КИСЛОРОДА ЗА 30 С";
+                    break;
+                case 4:
+                    if (language == "English")
+                        Center.text = "COMMUNICATIONS FAILURE\nRESET CHANNEL IMMEDIATELY";
+                    else if (language == "Russian")
+                        Center.text = "СБОЙ СВЯЗИ\nСБРОСИТЕ КАНАЛ НЕМЕДЛЕННО";
+
+                    Bottom.text = "Ф    ρ        " + "---" +
+                        " KM        ΩY " + "---" + "    " +
+                        "---" + "\n" +
+                        "       ρ˙      " + "---" +
+                        " М/S         ΩZ " + "---" + "    " +
+                        "---" + "\n";
+                    Right.text = "T = " + System.DateTime.Now.ToString("hh:mm:ss") + "\n" +
+                        "GSO  1234 " + "\n" +
+                        "---" + "\n" +
+                        "---" + "\n" +
+                        "---" + "\n" +
+                        "KURS 1\n" +
+                        "---" + "\n" +
+                        "---" + "\n" +
+                        "---" + "\n" +
+                        "---" + "\n" +
+                        "---" + "\n" +
+                        "---" + "\n" +
+                        "---" + "  \n";
+                    VariableNamesRight.text = "\n\n  ωX\n  ωY\n  ωZ\n\n   γ\n   ψ\n   θ\nψ ~\nθ ~\nρ  \nρ˙ \n";
+                    break;
+                default:
+                    Center.text = "";
+                    break;
+            }
         }
     }
 

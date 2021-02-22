@@ -19,10 +19,16 @@ public class Target : MonoBehaviour
     private bool fpsCam = true;
     private FirstPersonLook fpl;
     private bool disableOutline = false;
+    private int vitalSuppCounter = 0;
+    private int compFailCounter = 0;
+    private GameObject Crosshair;
 
     void Start()
     {
         //UICanvas = GameObject.Find("UICanvas");
+        Crosshair = GameObject.Find("Crosshair");
+        if (SceneManager.GetActiveScene().name == "GianTutorial" && this.gameObject.name == "Button_9")
+            Crosshair.SetActive(false);
 
         _renderer = GetComponent<Renderer>();
         originalMaterial = _renderer.material;
@@ -130,6 +136,10 @@ public class Target : MonoBehaviour
                     uiData.status = "SEEKING  ";
                     uiData.button2.text = "LANG";
                     uiData.button3.text = "UI";
+                    uiData.button4.text = "ENGINES\nRESTART";
+                    uiData.button4.fontSize = 0.004f;
+                    uiData.button5.text = "RESET\nCOMMS";
+                    uiData.button6.text = "RESET\nVS";
                     uiData.button7.text = "TPV";
                     uiData.button8.text = "LESS\nPOWER";
                     uiData.button9.text = "MORE\nPOWER";
@@ -140,6 +150,10 @@ public class Target : MonoBehaviour
                     uiData.status = "ЗАХВАТ  ";
                     uiData.button2.text = "язык";
                     uiData.button3.text = "пи";
+                    uiData.button4.text = "ПЕРЕЗАПУСК\nДВИГАТЕЛЯ";
+                    uiData.button4.fontSize = 0.003f;
+                    uiData.button5.text = "СБРОС\nСВЯЗИ";
+                    uiData.button6.text = "СБРОС\nЖП";
                     uiData.button7.text = "втл";
                     uiData.button8.text = "меньше\nмощность";
                     uiData.button9.text = "более\nмощность";
@@ -147,7 +161,32 @@ public class Target : MonoBehaviour
                 break;
             case 3:
                 dotweenController.RunPressAnimation();
-                uiData.UIenable = !uiData.UIenable;
+                if (SceneManager.GetActiveScene().name == "Main Scene")
+                {
+                    RandomFailures randScript = soyuz.GetComponent<RandomFailures>();
+                    if (randScript.failureType == 5)
+                        compFailCounter++;
+                    else
+                    {
+                        uiData.UIenable = !uiData.UIenable;
+                        Crosshair.SetActive(uiData.UIenable);
+                    }
+
+                    if (compFailCounter == 2)
+                    {
+                        randScript.failure = false;
+                        uiData.UIenable = true;
+                        Light InteriorLight = GameObject.Find("SoyuzInteriorLight").GetComponent<Light>();
+                        InteriorLight.color = Color.black;
+                        compFailCounter = 0;
+                        Crosshair.SetActive(true);
+                    }
+                }
+                else
+                {
+                    uiData.UIenable = !uiData.UIenable;
+                    Crosshair.SetActive(uiData.UIenable);
+                }
                 break;
             case 7:
                 dotweenController.RunPressAnimation();
@@ -156,6 +195,51 @@ public class Target : MonoBehaviour
                     PropulsorEffectsController effControl = soyuz.GetComponent<PropulsorEffectsController>();
                     effControl.enableEffects = !effControl.enableEffects;
                     effControl.StopAll();
+                }
+                break;
+            case 4:
+                dotweenController.RunPressAnimation();
+                if (SceneManager.GetActiveScene().name == "Main Scene")
+                {
+                    RandomFailures randScript = GameObject.Find("Soyuz").GetComponent<RandomFailures>();
+                    if(randScript.failureType == 1)
+                    {
+                        JoystickController jcScript = soyuz.GetComponent<JoystickController>();
+                        jcScript.fault = false;
+                        randScript.failure = false;
+                    }
+                }   
+                break;
+            case 6:
+                dotweenController.RunPressAnimation();
+                if (SceneManager.GetActiveScene().name == "Main Scene")
+                {
+                    RandomFailures randScript = soyuz.GetComponent<RandomFailures>();
+
+                    if (randScript.failureType == 3)
+                        vitalSuppCounter++;
+
+                    if(vitalSuppCounter == 4)
+                    {
+                        uiData.UIenable = true;
+                        Light InteriorLight = GameObject.Find("SoyuzInteriorLight").GetComponent<Light>();
+                        InteriorLight.color = Color.white;
+                        vitalSuppCounter = 0;
+                        randScript.failure = false;
+                    }
+                }
+                break;
+            case 5:
+                dotweenController.RunPressAnimation();
+                if (SceneManager.GetActiveScene().name == "Main Scene")
+                {
+                    RandomFailures randScript = soyuz.GetComponent<RandomFailures>();
+                    
+                    if(randScript.failureType == 4)
+                    {
+                        randScript.failure = false;
+                        uiData.UIenable = true;
+                    }
                 }
                 break;
         }
