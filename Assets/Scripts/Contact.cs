@@ -31,7 +31,7 @@ public class Contact : MonoBehaviour
         if (collision.gameObject == ExternalTarget && impactAngle < 0.1 && velocity < 0.05)
         {
             Debug.Log("Alignment! " + impactAngle + " " + velocity);
-            EndGame(true);            
+            EndGame(1);            
             if (ExternalContact != null)
                 ExternalContact();
         }
@@ -59,7 +59,7 @@ public class Contact : MonoBehaviour
             if (ExcessiveContact != null)
                 ExcessiveContact();
                 Debug.Log("Excessive contact");
-                EndGame(false);
+                EndGame(2);
         }
     }
 
@@ -68,12 +68,12 @@ public class Contact : MonoBehaviour
         if (autodestruct && ExcessiveContact != null)
         {
             ExcessiveContact();
-            EndGame(false);
+            EndGame(2);
             autodestruct = false;
         }
     }
 
-    public void EndGame(bool victory)
+    public void EndGame(int endGameState)
     {
         menuCanvas.GetComponent<PauseMenu>().Pause();
         pauseMenu.SetActive(false);
@@ -87,13 +87,45 @@ public class Contact : MonoBehaviour
             endGameCamera.Activate();
         }
 
-        if (victory)
+        TMPro.TextMeshProUGUI tmpText = gameOver.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+
+        switch (endGameState)
         {
-            endGame.SetActive(true);
-        }
-        else
-        {            
-            gameOver.SetActive(true);            
+            case 1:
+                endGame.SetActive(true);
+                break;
+            case 2:
+                gameOver.SetActive(true);
+                tmpText.text = "After a human error, the ISS has been destroyed.\nLuckyly, that wasn't the real one.";
+                break;
+            case 3:
+                gameOver.SetActive(true);
+                tmpText.text = "Soyuz escaped Earth's gravitational pull\nand is now stranded in space.";
+                break;
+            case 4:
+                gameOver.SetActive(true);
+                tmpText.text = "Soyuz lost too much altitude\nand fell back on Earth.";
+                break;
+            case 5:
+                gameOver.SetActive(true);
+                tmpText.text = "Soyuz missed the Rendevouz window and has been forced to perform reentry.";
+                break;
+            case 6:
+                gameOver.SetActive(true);
+                tmpText.text = "Soyuz missed the Rendevouz window and fell towards the austral emisphere.";
+                break;
+            case 7:
+                gameOver.SetActive(true);
+                tmpText.text = "Soyuz approached the ISS too fast, missing it and forcing a reentry.";
+                break;
+            case 8:
+                gameOver.SetActive(true);
+                tmpText.text = "Soyuz lost too much approach velocity and missed the ISS completely.";
+                break;
+            case 9:
+                gameOver.SetActive(true);
+                tmpText.text = "After a vital support failure, the crew didn't manage to reboot the systems.";
+                break;
         }
     }
 

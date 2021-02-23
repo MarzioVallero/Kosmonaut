@@ -12,6 +12,7 @@ public class Target : MonoBehaviour
     public Camera FplCam;
     public GameObject UICanvas;
 
+    private AudioSource buttonAudio;
     private Renderer _renderer;
     private Material originalMaterial;
     private WaitForSeconds pressDuration;
@@ -53,6 +54,8 @@ public class Target : MonoBehaviour
             ScreenCam.enabled = !fpsCam;
             fpl = FplCam.GetComponent<FirstPersonLook>();
         }
+        if (!isScreen || this.name == "Button_7")
+            buttonAudio = GameObject.Find("ButtonAudio").GetComponent<AudioSource>();
     }
 
     public void Activate()
@@ -110,10 +113,12 @@ public class Target : MonoBehaviour
         float thrustVariation = joystickController.InitialThrust * 0.5f;
         float torqueVariation = joystickController.InitialTorque * 0.5f;
 
+        dotweenController.RunPressAnimation();
+        buttonAudio.PlayOneShot(buttonAudio.clip);
+
         switch (buttonNumber)
         {
             case 8:
-                dotweenController.RunPressAnimation();
                 if (joystickController.Thrust - thrustVariation > joystickController.MinThrust)
                 {
                     joystickController.Thrust -= thrustVariation;
@@ -121,7 +126,6 @@ public class Target : MonoBehaviour
                 }
                 break;
             case 9:
-                dotweenController.RunPressAnimation();
                 if (joystickController.Thrust + thrustVariation <= joystickController.MaxThrust)
                 {
                     joystickController.Thrust += thrustVariation;
@@ -129,7 +133,6 @@ public class Target : MonoBehaviour
                 }
                 break;
             case 2:
-                dotweenController.RunPressAnimation();
                 if(uiData.language == "Russian")
                 {
                     uiData.language = "English";
@@ -160,7 +163,6 @@ public class Target : MonoBehaviour
                 }
                 break;
             case 3:
-                dotweenController.RunPressAnimation();
                 if (SceneManager.GetActiveScene().name == "Main Scene")
                 {
                     RandomFailures randScript = soyuz.GetComponent<RandomFailures>();
@@ -189,7 +191,6 @@ public class Target : MonoBehaviour
                 }
                 break;
             case 7:
-                dotweenController.RunPressAnimation();
                 if(SceneManager.GetActiveScene().name == "Main Scene")
                 {
                     PropulsorEffectsController effControl = soyuz.GetComponent<PropulsorEffectsController>();
@@ -198,7 +199,6 @@ public class Target : MonoBehaviour
                 }
                 break;
             case 4:
-                dotweenController.RunPressAnimation();
                 if (SceneManager.GetActiveScene().name == "Main Scene")
                 {
                     RandomFailures randScript = GameObject.Find("Soyuz").GetComponent<RandomFailures>();
@@ -211,7 +211,6 @@ public class Target : MonoBehaviour
                 }   
                 break;
             case 6:
-                dotweenController.RunPressAnimation();
                 if (SceneManager.GetActiveScene().name == "Main Scene")
                 {
                     RandomFailures randScript = soyuz.GetComponent<RandomFailures>();
@@ -230,7 +229,6 @@ public class Target : MonoBehaviour
                 }
                 break;
             case 5:
-                dotweenController.RunPressAnimation();
                 if (SceneManager.GetActiveScene().name == "Main Scene")
                 {
                     RandomFailures randScript = soyuz.GetComponent<RandomFailures>();

@@ -40,7 +40,7 @@ public class RandomFailures : MonoBehaviour
         if(failureType == 3)
         {
             Debug.Log("You ran out of oxygen.");
-            contactScript.EndGame(false);
+            contactScript.EndGame(9);
         }
     }
 

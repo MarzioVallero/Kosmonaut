@@ -21,6 +21,12 @@ public class ISSManager : MonoBehaviour
         Contact.ExcessiveContact -= DeactivateColliders;
     }
 
+    IEnumerator waitAfterExplosion()
+    {
+        yield return new WaitForSeconds(1.5f);
+        explosion.Stop();
+    }
+
     void DeactivateColliders()
     {
         Debug.Log("Colliders Deactivated.");
@@ -39,16 +45,15 @@ public class ISSManager : MonoBehaviour
             {
                 child.GetComponent<Rigidbody>().isKinematic = false;
                 if (child.GetComponent<Collider>().GetType() == typeof(MeshCollider))
-                {
                     Destroy(child.gameObject.GetComponent<Collider>());
-                    child.gameObject.AddComponent<BoxCollider>();
-                }
-                child.GetComponent<Rigidbody>().AddExplosionForce(1f, ISS.position, 3f);
+                child.gameObject.AddComponent<BoxCollider>();
+                child.GetComponent<Rigidbody>().AddExplosionForce(1f, ISS.position, 10f);
             }
         }
 
         explosion.Play();
         Destroy(explosion, explosion.main.duration);
         Contact.ExcessiveContact -= Explode;
+        StartCoroutine(waitAfterExplosion());
     }
 }
