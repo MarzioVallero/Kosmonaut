@@ -79,8 +79,13 @@ public class Contact : MonoBehaviour
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
         waitTime = new WaitForSeconds(4f);
-        StartCoroutine(TimedAction());
+        StartCoroutine(TimedAction(endGameState));
+    }
 
+    private IEnumerator TimedAction(int endGameState)
+    {
+        yield return waitTime;
+        Time.timeScale = 0f;
         if (SceneManager.GetActiveScene().name == "Main Scene")
         {
             Target endGameCamera = GameObject.Find("EndGameView").GetComponent<Target>();
@@ -127,11 +132,5 @@ public class Contact : MonoBehaviour
                 tmpText.text = "After a vital support failure, the crew didn't manage to reboot the systems.";
                 break;
         }
-    }
-
-    private IEnumerator TimedAction()
-    {
-        yield return waitTime;
-        Time.timeScale = 0f;
     }
 }

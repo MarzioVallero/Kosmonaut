@@ -15,6 +15,8 @@ public class RandomFailures : MonoBehaviour
     private Camera FrontCamera;
     private Light InteriorLight;
     private GameObject Crosshair;
+    private GameObject ISSCollider;
+    private GameObject Soyuz;
 
     void Start()
     {
@@ -24,6 +26,8 @@ public class RandomFailures : MonoBehaviour
         InteriorLight = GameObject.Find("SoyuzInteriorLight").GetComponent<Light>();
         contactScript = this.GetComponent<Contact>();
         Crosshair = GameObject.Find("Crosshair");
+        ISSCollider = GameObject.Find("ZvezdaExternalCollider");
+        Soyuz = GameObject.Find("Soyuz");
     }
 
     IEnumerator waitCameraFailure()
@@ -46,7 +50,8 @@ public class RandomFailures : MonoBehaviour
 
     void Update()
     {
-        if (!failure)
+        float distance = (ISSCollider.transform.position - Soyuz.transform.position).magnitude;
+        if (!failure && distance > 10)
         {
             InteriorLight.color = Color.white;
             failureType = Random.Range(0, probability);
