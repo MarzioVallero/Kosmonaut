@@ -48,13 +48,23 @@ public class RandomFailures : MonoBehaviour
         }
     }
 
-    void Update()
+    void CheatCodes()
     {
+        if (Input.GetKeyDown(KeyCode.Alpha1)) failureType = 1;
+        if (Input.GetKeyDown(KeyCode.Alpha2)) failureType = 2;
+        if (Input.GetKeyDown(KeyCode.Alpha3)) failureType = 3;
+        if (Input.GetKeyDown(KeyCode.Alpha4)) failureType = 4;
+        if (Input.GetKeyDown(KeyCode.Alpha5)) failureType = 5;
+    }
+
+    void Update()
+    {        
         float distance = (ISSCollider.transform.position - Soyuz.transform.position).magnitude;
         if (!failure && distance > 10)
         {
             InteriorLight.color = Color.white;
             failureType = Random.Range(0, probability);
+            CheatCodes();
             switch (failureType)
             {
                 case 1:
@@ -87,7 +97,7 @@ public class RandomFailures : MonoBehaviour
                     failure = true;
                     Debug.Log("Onboard computer failure, no UI");
                     UIScript.UIenable = false;
-                    InteriorLight.color = Color.black;
+                    //InteriorLight.color = Color.black;
                     Crosshair.SetActive(false);
                     occourredFailures++;
                     break;
