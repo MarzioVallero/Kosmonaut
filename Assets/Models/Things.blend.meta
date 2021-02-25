@@ -3,7 +3,12 @@ guid: d8cbf9683948f2d4691985c78f1a020e
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black astro
+    second: {fileID: 2100000, guid: ddf852cb4c01f2545a920b42cd1c87ee, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
