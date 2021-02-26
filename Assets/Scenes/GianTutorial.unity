@@ -74,7 +74,7 @@ LightmapSettings:
     m_MixedBakeMode: 2
     m_BakeBackend: 2
     m_PVRSampling: 1
-    m_PVRDirectSampleCount: 32
+    m_PVRDirectSampleCount: 64
     m_PVRSampleCount: 512
     m_PVRBounces: 2
     m_PVREnvironmentSampleCount: 256
@@ -7774,7 +7774,7 @@ Transform:
   m_LocalScale: {x: 0.019236475, y: 0.014646901, z: 0.014949317}
   m_Children: []
   m_Father: {fileID: 1120333811}
-  m_RootOrder: 4
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90.00001, y: 180, z: -179.99998}
 --- !u!114 &1557954105
 MonoBehaviour:
@@ -11082,6 +11082,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 119232695, guid: 4b9d05f8f68c1344eb109e0d3609f4ab, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 119232697, guid: 4b9d05f8f68c1344eb109e0d3609f4ab, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -11270,6 +11274,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Intensity
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4170203951850692603, guid: 4b9d05f8f68c1344eb109e0d3609f4ab,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 5907769961966886644, guid: 4b9d05f8f68c1344eb109e0d3609f4ab,
         type: 3}
@@ -11608,7 +11617,7 @@ Transform:
   m_LocalScale: {x: 0.46770477, y: 0.4677049, z: 0.4677049}
   m_Children: []
   m_Father: {fileID: 1120333811}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: -179.99998}
 --- !u!20 &2035525445
 Camera:
