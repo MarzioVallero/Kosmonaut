@@ -33,6 +33,9 @@ public class JoystickController : MonoBehaviour
 
     void Start()
     {
+        rb = GameObject.Find("Soyuz").GetComponent<Rigidbody>();
+        ZvezdaExternalCollider = GameObject.Find("ZvezdaExternalCollider");
+
         Thrust = InitialThrust;
         Torque = InitialTorque;
 
@@ -41,7 +44,7 @@ public class JoystickController : MonoBehaviour
             GameObject tmp = GameObject.Find("IndestructableData");
             settingsManager = tmp.GetComponent<SettingsManager>();
             jType = settingsManager.controllerType;
-        }        
+        }
     }
 
     void OnEnable()

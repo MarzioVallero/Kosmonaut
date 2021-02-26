@@ -24,6 +24,12 @@ public class Contact : MonoBehaviour
     private float repulseRotation = 200;
     private WaitForSeconds waitTime;
 
+    private void Start()
+    {
+        ExternalTarget = GameObject.Find("ZvezdaExternalCollider");
+        Soyuz = GameObject.Find("Soyuz").GetComponent<Rigidbody>();
+    }
+
     private void OnTriggerEnter(Collider collision)
     {
         float impactAngle = Vector3.Angle(Soyuz.transform.position, ExternalTarget.transform.position);
@@ -34,6 +40,12 @@ public class Contact : MonoBehaviour
             EndGame(1);            
             if (ExternalContact != null)
                 ExternalContact();
+        }
+        else
+        {
+            Soyuz.AddForce(-Soyuz.velocity * repulseForce, ForceMode.Impulse);
+            if (FaultyContact != null)
+                FaultyContact();
         }
     }
 

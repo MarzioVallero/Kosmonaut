@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Buttons_mat
+  m_Name: PanelKnobs_mat
   m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
   m_ShaderKeywords: _METALLICGLOSSMAP
   m_LightmapFlags: 4
@@ -40,11 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 84ceba76a2813ae4eb386082c5d8b357, type: 3}
+        m_Texture: {fileID: 2800000, guid: 187739a5d13b38844a7bc41dc864c3a4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
-        m_Texture: {fileID: 2800000, guid: ad7f15b9cfeabb843852a7b0e5985670, type: 3}
+        m_Texture: {fileID: 2800000, guid: 7bc0ab1e2ebc0734683fcb675291141f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -73,5 +73,5 @@ Material:
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
-    - _Color: {r: 0.7735849, g: 0.7735849, b: 0.7735849, a: 1}
+    - _Color: {r: 0.2830189, g: 0.2830189, b: 0.2830189, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

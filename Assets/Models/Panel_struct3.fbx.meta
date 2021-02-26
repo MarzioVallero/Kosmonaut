@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: cdf9a109f4f8f9e42947efe0c4df46a5
+guid: 9b443938609efb14c8a8ae08438c3e08
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
@@ -12,8 +12,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: MainStructureLight
+    second: {fileID: 2100000, guid: ddc82923269546e448a61d516469df80, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Materiale_12
     second: {fileID: 2100000, guid: 7b8773dfb93dba34a9ff2c05e46e41c6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aluminium_blurryYellow
+    second: {fileID: 2100000, guid: 837f413e8e7e7f543b796c729ae15702, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -24,6 +34,11 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: aluminium_matteBlack
     second: {fileID: 2100000, guid: 48f8ece66bf1dc7428df7141bb77efea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aluminium_matteMiddiumGrey
+    second: {fileID: 2100000, guid: 13b0a72dfd925f445a04c8906c63e1ce, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
