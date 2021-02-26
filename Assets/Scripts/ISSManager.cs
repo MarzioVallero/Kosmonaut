@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class ISSManager : MonoBehaviour
 {
-    public Rigidbody ISS;
-    public ParticleSystem explosion;
+    public Rigidbody ISS = null;
+    public ParticleSystem explosion = null;
+
+    private void Start()
+    {
+        ISS = GameObject.Find("ISS_stationary").GetComponent<Rigidbody>();
+        explosion = GameObject.Find("BigExplosion").GetComponent<ParticleSystem>(); 
+    }
 
     private void OnEnable()
     {

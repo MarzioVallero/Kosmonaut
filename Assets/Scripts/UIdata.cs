@@ -54,6 +54,8 @@ public class UIdata : MonoBehaviour
     private void Start()
     {
         StartCoroutine(Randomizer());
+        Soyuz = GameObject.Find("Soyuz").GetComponent<Rigidbody>();
+        ISS = GameObject.Find("ZvezdaExternalCollider");
     }
 
     // Update is called once per frame
