@@ -7,8 +7,68 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
+      name: 21UuCUSEA6L._AC_
+    second: {fileID: 2100000, guid: 982842f8ee56c92419e7c2deccc71e77, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Astronaut
+    second: {fileID: 2100000, guid: a143e17e1ae60934b9f34c575a64827f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Black astro
+    second: {fileID: 2100000, guid: d37cf4db7d8de3946980ccf2e0b827c4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Blue astronaut
+    second: {fileID: 2100000, guid: f3dbee360a5022642b6ad2299f1b0b6f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Casco white
+    second: {fileID: 2100000, guid: 936eae947e0622f44a3fbc60b7140acd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grey astronaut
+    second: {fileID: 2100000, guid: d09e30ff21ed3e04a9e0468fbdd48738, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Head
+    second: {fileID: 2100000, guid: 5f4508bfdc9aa3e43b51974921b60785, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
       name: Material.001
     second: {fileID: 2100000, guid: 9b6788689ecad7241a7e14c0f844c431, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Stripes Astronaut
+    second: {fileID: 2100000, guid: dfe92fb3b40c1554cbf52be68a3fa1f0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: White astronaut
+    second: {fileID: 2100000, guid: 9a1e4d7a8ff4cbf44b53701cb575e832, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aluminium_matteBlack
+    second: {fileID: 2100000, guid: 5312f448682731f4294eebe17b3faaff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: aluminium_matteBlack-2
+    second: {fileID: 2100000, guid: 38dad8140bcc84242bdc4eae819ed906, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: astro 1
+    second: {fileID: 2100000, guid: 0ef9ea28c68810a428d10d38139182aa, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
