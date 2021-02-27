@@ -3541,17 +3541,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b7d7f55a667d73e429c142da72943baf,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.135
+      value: -0.133
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7d7f55a667d73e429c142da72943baf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.691
+      value: 2.6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7d7f55a667d73e429c142da72943baf,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.649
+      value: -3.651
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7d7f55a667d73e429c142da72943baf,
         type: 3}
@@ -3596,17 +3596,17 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: b7d7f55a667d73e429c142da72943baf,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.03126796
+      value: 0.033
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7d7f55a667d73e429c142da72943baf,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.03126796
+      value: 0.033
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b7d7f55a667d73e429c142da72943baf,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.03126796
+      value: 0.033
       objectReference: {fileID: 0}
     - target: {fileID: -7789250619551009665, guid: b7d7f55a667d73e429c142da72943baf,
         type: 3}
@@ -18384,8 +18384,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9622642, g: 0.9527711, b: 0.92141336, a: 1}
-  m_Intensity: 0.35
-  m_Range: 10
+  m_Intensity: 1.5
+  m_Range: 1.2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -20780,8 +20780,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0.9622642, g: 0.9527711, b: 0.92141336, a: 1}
-  m_Intensity: 0.35
-  m_Range: 10
+  m_Intensity: 5
+  m_Range: 1.2
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -28293,7 +28293,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eae5eecfa1245f54797a4e6d6a00e705, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Soyuz: {fileID: 1201305782}
 --- !u!114 &1201305786
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35245,7 +35244,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 65
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1845764280
 Transform:
   m_ObjectHideFlags: 0

@@ -29,7 +29,8 @@ public class JoystickController : MonoBehaviour
     GamePadState state;
     PlayerIndex playerIndex;
 
-    private float intensity = 0f;    
+    private float intensity = 0f;
+    private bool cheatCodeActive = false;
 
     void Start()
     {
@@ -101,8 +102,15 @@ public class JoystickController : MonoBehaviour
 
     void CheatCodes()
     {
-        if (Input.GetKeyDown(KeyCode.Z)) enable = !enable;
-        if (Input.GetKeyDown(KeyCode.X)) gameObject.GetComponent<Contact>().autodestruct = true;
+        if (Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.G) && Input.GetKey(KeyCode.A))
+            cheatCodeActive = true;
+        if (cheatCodeActive)
+        {
+            if (Input.GetKeyDown(KeyCode.Z))
+                enable = !enable;
+            if (Input.GetKeyDown(KeyCode.X))
+                gameObject.GetComponent<Contact>().autodestruct = true;
+        }        
     }
 
     IEnumerator waiter()

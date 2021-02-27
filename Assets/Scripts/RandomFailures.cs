@@ -17,6 +17,7 @@ public class RandomFailures : MonoBehaviour
     private GameObject Crosshair;
     private GameObject ISSCollider;
     private GameObject Soyuz;
+    private bool cheatCodeActive = false;
 
     void Start()
     {
@@ -50,11 +51,16 @@ public class RandomFailures : MonoBehaviour
 
     void CheatCodes()
     {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) failureType = 1;
-        if (Input.GetKeyDown(KeyCode.Alpha2)) failureType = 2;
-        if (Input.GetKeyDown(KeyCode.Alpha3)) failureType = 3;
-        if (Input.GetKeyDown(KeyCode.Alpha4)) failureType = 4;
-        if (Input.GetKeyDown(KeyCode.Alpha5)) failureType = 5;
+        if (Input.GetKey(KeyCode.M) && Input.GetKey(KeyCode.G) && Input.GetKey(KeyCode.A))
+            cheatCodeActive = true;
+        if(cheatCodeActive)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha1)) failureType = 1;
+            if (Input.GetKeyDown(KeyCode.Alpha2)) failureType = 2;
+            if (Input.GetKeyDown(KeyCode.Alpha3)) failureType = 3;
+            if (Input.GetKeyDown(KeyCode.Alpha4)) failureType = 4;
+            if (Input.GetKeyDown(KeyCode.Alpha5)) failureType = 5;
+        } 
     }
 
     void Update()

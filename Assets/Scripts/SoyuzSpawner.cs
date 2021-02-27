@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class SoyuzSpawner : MonoBehaviour
 {
-    public Rigidbody Soyuz;
+    private Rigidbody Soyuz = null;
     private float RangePosition = 200f;
     private float RangeAngle = 180f;
 
     void Start()
     {
-        Soyuz = GameObject.Find("Soyuz").GetComponent<Rigidbody>();
+        Soyuz = this.GetComponent<Rigidbody>();
 
         Vector3 randomPosition = new Vector3(Random.Range(-RangePosition, RangePosition), Random.Range(-RangePosition, RangePosition), Random.Range(-RangePosition / 10, RangePosition / 10));
         Soyuz.transform.Translate(randomPosition, Space.Self);
