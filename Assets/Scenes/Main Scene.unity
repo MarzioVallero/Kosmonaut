@@ -18351,7 +18351,7 @@ GameObject:
   m_Component:
   - component: {fileID: 585718369}
   - component: {fileID: 585718370}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SoyuzInteriorLight (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18385,7 +18385,7 @@ Light:
   m_Shape: 0
   m_Color: {r: 0.9622642, g: 0.9527711, b: 0.92141336, a: 1}
   m_Intensity: 1.5
-  m_Range: 1.2
+  m_Range: 1
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
@@ -20761,7 +20761,7 @@ GameObject:
   m_Component:
   - component: {fileID: 709451377}
   - component: {fileID: 709451376}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: SoyuzInteriorLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}

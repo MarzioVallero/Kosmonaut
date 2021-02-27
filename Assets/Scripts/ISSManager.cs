@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class ISSManager : MonoBehaviour
 {
-    public Rigidbody ISS = null;
-    public ParticleSystem explosion = null;
+    private Rigidbody ISS = null;
+    private ParticleSystem explosion = null;
 
     private void Start()
     {
-        ISS = GameObject.Find("ISS_stationary").GetComponent<Rigidbody>();
-        explosion = GameObject.Find("BigExplosion").GetComponent<ParticleSystem>(); 
+        ISS = this.GetComponent<Rigidbody>();
+        explosion = GameObject.Find("BigExplosion").GetComponent<ParticleSystem>();
     }
 
     private void OnEnable()
@@ -58,7 +58,7 @@ public class ISSManager : MonoBehaviour
         }
 
         explosion.Play();
-        Destroy(explosion, explosion.main.duration);
+        //Destroy(explosion, explosion.main.duration);
         Contact.ExcessiveContact -= Explode;
         StartCoroutine(waitAfterExplosion());
     }
